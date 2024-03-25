@@ -5,6 +5,7 @@ import {
   Contract,
   contractAddress,
   ContractProvider,
+  fromNano,
   Sender,
   SendMode,
 } from '@ton/core';
@@ -41,84 +42,33 @@ export class MainContract implements Contract {
     return new MainContract(address, init);
   }
 
-  async sendIncrement(
-    provider: ContractProvider,
-    sender: Sender,
-    value: bigint,
-    increment_by: number
-  ) {
-    const msg_body = beginCell()
-      .storeUint(1, 32) // OP code
-      .storeUint(increment_by, 32) // increment_by value
-      .endCell();
+  async getFeePercent(provider: ContractProvider) {
+    const { stack } = await provider.get('get_fee_percent', []);
 
-    await provider.internal(sender, {
-      value,
-      sendMode: SendMode.PAY_GAS_SEPARATELY,
-      body: msg_body,
-    });
+    return stack.readNumber();
   }
 
-  async sendDeposit(provider: ContractProvider, sender: Sender, value: bigint) {
-    const msg_body = beginCell()
-      .storeUint(2, 32) // OP code
-      .endCell();
+  async getBetMin(provider: ContractProvider) {
+    const { stack } = await provider.get('get_bet_min', []);
 
-    await provider.internal(sender, {
-      value,
-      sendMode: SendMode.PAY_GAS_SEPARATELY,
-      body: msg_body,
-    });
+    return fromNano(stack.readNumber());
   }
 
-  async sendNoCodeDeposit(
-    provider: ContractProvider,
-    sender: Sender,
-    value: bigint
-  ) {
-    const msg_body = beginCell().endCell();
+  async getPlayersMax(provider: ContractProvider) {
+    const { stack } = await provider.get('get_players_max', []);
 
-    await provider.internal(sender, {
-      value,
-      sendMode: SendMode.PAY_GAS_SEPARATELY,
-      body: msg_body,
-    });
+    return stack.readNumber();
   }
 
-  async sendWithdrawalRequest(
-    provider: ContractProvider,
-    sender: Sender,
-    value: bigint,
-    amount: bigint
-  ) {
-    const msg_body = beginCell()
-      .storeUint(3, 32) // OP code
-      .storeCoins(amount)
-      .endCell();
+  async getPlayersCurrent(provider: ContractProvider) {
+    const { stack } = await provider.get('get_players_current', []);
 
-    await provider.internal(sender, {
-      value,
-      sendMode: SendMode.PAY_GAS_SEPARATELY,
-      body: msg_body,
-    });
+    return stack.readNumber();
   }
 
-  async getData(provider: ContractProvider) {
-    console.log('stackkakkas');
-    const { stack } = await provider.get('get_contract_storage_data', []);
-    console.log(stack, 'stackkakkas');
-    return {
-      number: stack.readNumber(),
-      recent_sender: stack.readAddress(),
-      owner_address: stack.readAddress(),
-    };
-  }
+  async getLockedBalance(provider: ContractProvider) {
+    const { stack } = await provider.get('get_locked_balance', []);
 
-  async getBalance(provider: ContractProvider) {
-    const { stack } = await provider.get('balance', []);
-
-    return {
-      balance: stack.readNumber(),
-    };
+    return fromNano(stack.readNumber());
   }
 }

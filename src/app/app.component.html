@@ -1,2 +1,30 @@
-<div class="app-container"><button id="ton-wallet-button"></button></div>
-{{ mainContractService.contract_address }}
+<div class="app-container text-white">
+  <div class="container mx-auto">
+    <app-header></app-header>
+
+    <p class="mb-4 flex items-center justify-between">
+      Deposit Address: {{ mainContractService.contractAddress }}
+      <ng-icon
+        class="cursor-pointer"
+        name="heroQrCode"
+        (click)="toggleDialog()"
+      ></ng-icon>
+    </p>
+    <app-qr-code-dialog
+      (click)="toggleDialog()"
+      *ngIf="isDialogVisible"
+    ></app-qr-code-dialog>
+
+    <div class="jackpot">
+      <span>Locked Balance: {{ mainContractService.lockedBalance || 0 }}</span>
+    </div>
+    <p class="text-white">
+      Fee percent: {{ mainContractService.feePercent || 0 }}
+    </p>
+    <p>Bet Min: {{ mainContractService.betMin || 0 }}</p>
+    <p>
+      Players: {{ mainContractService.playersCurrent || 0 }} /
+      {{ mainContractService.playersMax || 0 }}
+    </p>
+  </div>
+</div>

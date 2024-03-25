@@ -1,48 +1,46 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { THEME, TonConnectUI } from '@tonconnect/ui';
 import { MainContractService } from './services/main-contract.service';
+import { HeaderComponent } from './header/header.component';
+import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
+import {
+  NgIconComponent,
+  provideIcons,
+  provideNgIconsConfig,
+} from '@ng-icons/core';
+import { heroQrCode } from '@ng-icons/heroicons/outline';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    QrCodeDialogComponent,
+    NgIconComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  providers: [
+    provideIcons({ heroQrCode }),
+    provideNgIconsConfig({
+      size: '1.5em',
+    }),
+  ],
 })
 export class AppComponent {
   title = 'jackpot-frontend';
+  isDialogVisible = false;
+
+  toggleDialog() {
+    this.isDialogVisible = !this.isDialogVisible;
+  }
 
   constructor(public mainContractService: MainContractService) {}
 
   async ngOnInit() {
     this.mainContractService.useMainContract();
-  }
-
-  async ngAfterViewInit() {
-    //TODO: change manifestURL
-    const tonConnectUI = new TonConnectUI({
-      manifestUrl: 'http://localhost:4200/tonconnect-manifest.json',
-      buttonRootId: 'ton-wallet-button',
-    });
-
-    tonConnectUI.uiOptions = {
-      language: 'en',
-      uiPreferences: {
-        theme: THEME.DARK,
-        colorsSet: {
-          [THEME.DARK]: {
-            connectButton: {
-              background: '#75c4ee',
-            },
-          },
-        },
-      },
-    };
-
-    const walletsList = await tonConnectUI.getWallets();
-    console.log(walletsList);
-
-    console.log(tonConnectUI.modalState);
   }
 }

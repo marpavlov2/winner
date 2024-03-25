@@ -7,10 +7,14 @@ import { MainContract } from '../../wrappers/MainContract';
   providedIn: 'root',
 })
 export class MainContractService {
-  recent_sender: Address;
-  owner_address: Address;
-  counter_value: number = 0;
-  contract_address: string;
+  contractAddress = 'EQA4QN9z54gwFoFZRLkFRsbkp2d9xNUz_b8zM5FUbitj7Slz';
+  feePercent: number;
+  betMin: string;
+  playersMax: number;
+  playersCurrent: number;
+  lockedBalance: string;
+
+  isDialogVisible: boolean;
 
   constructor() {}
 
@@ -20,19 +24,33 @@ export class MainContractService {
     if (!client) return;
 
     const contract = new MainContract(
-      Address.parse('0QDjFnHzpusPk-RtkxkHFdmZcEyTwhiQ1T0OvvyN-vBBnWBj') // replace with your address from tutorial 2 step 8
+      Address.parse(this.contractAddress) // replace with your address from tutorial 2 step 8
     );
 
     const mainContract = client.open(contract) as OpenedContract<MainContract>;
+    console.log(
+      await client.getTransactions(
+        Address.parse('EQA4QN9z54gwFoFZRLkFRsbkp2d9xNUz_b8zM5FUbitj7Slz'),
+        { limit: 10 }
+      ),
+      'transactions'
+    );
+    // Fetch all contract data concurrently
+    const [feePercent, betMin, playersMax, playersCurrent, lockedBalance] =
+      await Promise.all([
+        mainContract.getFeePercent(),
+        mainContract.getBetMin(),
+        mainContract.getPlayersMax(),
+        mainContract.getPlayersCurrent(),
+        mainContract.getLockedBalance(),
+      ]);
 
-    if (!mainContract) return;
-
-    const val = await mainContract.getData();
-    (this.counter_value = val.number),
-      (this.recent_sender = val.recent_sender),
-      (this.owner_address = val.owner_address);
-
-    const contract_address = mainContract.address.toString();
+    // Assign fetched data to class properties
+    this.feePercent = feePercent;
+    this.betMin = betMin;
+    this.playersMax = playersMax;
+    this.playersCurrent = playersCurrent;
+    this.lockedBalance = lockedBalance;
   }
 
   async useTonClient(): Promise<TonClient> {
