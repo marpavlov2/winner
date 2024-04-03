@@ -8,8 +8,6 @@ import {
   fromNano,
   Sender,
   SendMode,
-  TupleItem,
-  TupleItemSlice,
 } from '@ton/core';
 import { uid } from 'uid';
 import { Player } from '../app/player.model';
@@ -162,8 +160,28 @@ export class MainContract implements Contract {
     amount: bigint
   ) {
     const msg_body = beginCell()
-      .storeUint(201, 32) // OP code
+      .storeUint(202, 32) // OP code
       .storeCoins(amount)
+      .endCell();
+
+    await provider.internal(sender, {
+      value,
+      sendMode: SendMode.PAY_GAS_SEPARATELY,
+      body: msg_body,
+    });
+  }
+
+  // 202 Players Max
+  async sendNewBetPlayersMaxRequest(
+    provider: ContractProvider,
+    sender: Sender,
+    value: bigint,
+    amount: number
+  ) {
+    const msg_body = beginCell()
+      .storeUint(202, 32) // OP code
+      .storeCoins(value)
+      .storeInt(amount, 8)
       .endCell();
 
     await provider.internal(sender, {

@@ -1,14 +1,28 @@
-<header class="backdrop-blur">
+<header>
   <div class="container mx-auto py-3">
     <div class="flex justify-between items-center text-white">
       <div class="flex items-center cursor-pointer">
-        <ng-icon class="mr-2" name="heroTrophy"></ng-icon>
+        <img
+          src="../../assets/earn-playing-logo.svg"
+          alt="earn-playing-logo"
+          height="80"
+          width="80"
+          class="logo-container mr-2"
+        />
         <h2 class="text-xl font-medium">
           earnplaying<span class="text-green-400">.</span>ton
         </h2>
       </div>
 
-      <button class="justify-end" id="ton-wallet-button"></button>
+      <div class="flex items-center">
+        <p
+          class="mr-6 cursor-pointer text-green-400 hover:text-slate-200"
+          (click)="openInfoDialog()"
+        >
+          How it Works?
+        </p>
+        <button class="justify-end" id="ton-wallet-button"></button>
+      </div>
     </div>
   </div>
 </header>

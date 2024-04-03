@@ -20,6 +20,7 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { MatDialog } from '@angular/material/dialog';
 import { GameInfoDialogComponent } from './game-info-dialog/game-info-dialog.component';
+import { SocialIconsComponent } from './social-icons/social-icons.component';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,7 @@ import { GameInfoDialogComponent } from './game-info-dialog/game-info-dialog.com
     PlayerComponent,
     MatSnackBarModule,
     GameInfoDialogComponent,
+    SocialIconsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -65,15 +67,6 @@ export class AppComponent {
       width: '380px',
       panelClass: 'custom-dialog',
     });
-  }
-
-  openInfoDialog(): void {
-    const dialogRef = this.dialog.open(GameInfoDialogComponent, {
-      width: '680px',
-      panelClass: 'custom-dialog',
-    });
-
-    dialogRef.componentInstance.fee = this.mainContractService.feePercent;
   }
 
   copyMessage(): void {

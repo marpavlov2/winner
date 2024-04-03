@@ -1,11 +1,15 @@
 .box {
   border-radius: 8px;
-  background: #190c25;
+  background: #251633;
+
+  &:hover {
+    background-color: #11031c;
+  }
 
   .box-number {
     min-width: 32px;
     min-height: 32px;
-    background-color: #251633;
+    background-color: #331f46;
     border-radius: 100%;
   }
 

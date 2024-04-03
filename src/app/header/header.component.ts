@@ -6,11 +6,14 @@ import {
   provideIcons,
   provideNgIconsConfig,
 } from '@ng-icons/core';
+import { MatDialog } from '@angular/material/dialog';
+import { GameInfoDialogComponent } from '../game-info-dialog/game-info-dialog.component';
+import { MainContractService } from '../services/main-contract.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIconComponent],
+  imports: [NgIconComponent, GameInfoDialogComponent],
   providers: [
     provideIcons({
       heroTrophy,
@@ -23,6 +26,10 @@ import {
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  constructor(
+    public dialog: MatDialog,
+    public mainContractService: MainContractService
+  ) {}
   async ngAfterViewInit() {
     const tonConnectUI = new TonConnectUI({
       manifestUrl:
@@ -43,5 +50,14 @@ export class HeaderComponent {
         },
       },
     };
+  }
+
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(GameInfoDialogComponent, {
+      width: '680px',
+      panelClass: 'custom-dialog',
+    });
+
+    dialogRef.componentInstance.fee = this.mainContractService.feePercent;
   }
 }
