@@ -1,0 +1,15 @@
+.box {
+  border-radius: 8px;
+  background: #190c25;
+
+  .box-number {
+    min-width: 32px;
+    min-height: 32px;
+    background-color: #251633;
+    border-radius: 100%;
+  }
+
+  &.is-winner {
+    background: linear-gradient(145deg, #a041fd, #61d4a5);
+  }
+}

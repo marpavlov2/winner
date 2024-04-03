@@ -8,7 +8,11 @@ import {
   fromNano,
   Sender,
   SendMode,
+  TupleItem,
+  TupleItemSlice,
 } from '@ton/core';
+import { uid } from 'uid';
+import { Player } from '../app/player.model';
 
 export type MainContractConfig = {
   number: number;
@@ -54,6 +58,12 @@ export class MainContract implements Contract {
     return fromNano(stack.readNumber());
   }
 
+  async getBetMax(provider: ContractProvider) {
+    const { stack } = await provider.get('get_bet_max', []);
+
+    return fromNano(stack.readNumber());
+  }
+
   async getPlayersMax(provider: ContractProvider) {
     const { stack } = await provider.get('get_players_max', []);
 
@@ -70,5 +80,96 @@ export class MainContract implements Contract {
     const { stack } = await provider.get('get_locked_balance', []);
 
     return fromNano(stack.readNumber());
+  }
+
+  async getContractBalance(provider: ContractProvider) {
+    const { stack } = await provider.get('get_contract_balance', []);
+
+    return fromNano(stack.readNumber());
+  }
+
+  async getLuckyTicket(provider: ContractProvider) {
+    const { stack } = await provider.get('get_lucky_ticket', []);
+
+    return stack.readNumber();
+  }
+
+  async getCurrentRound(provider: ContractProvider): Promise<any[]> {
+    const result = (await provider.get('get_players_list_current_round', []))
+      .stack;
+
+    let players: any[] = [];
+    let record = result.readTuple();
+    while (record.remaining) {
+      let record2 = record.readTuple();
+      players.push({
+        id: uid(16),
+        address: Address.normalize(record2.readAddress()),
+        startTicket: record2.readBigNumber(),
+        endTicket: record2.readBigNumber(),
+        bet: fromNano(record2.readBigNumber()),
+      });
+    }
+    console.log(players);
+    return players.reverse();
+  }
+
+  async getLastRound(provider: ContractProvider): Promise<Player[]> {
+    const result = (await provider.get('get_players_list_last_round', []))
+      .stack;
+
+    let players: Player[] = [];
+    let record = result.readTuple();
+    while (record.remaining) {
+      let record2 = record.readTuple();
+      players.push(
+        new Player({
+          id: uid(16),
+          address: Address.normalize(record2.readAddress()),
+          startTicket: record2.readBigNumber(),
+          endTicket: record2.readBigNumber(),
+          bet: fromNano(record2.readBigNumber()),
+          isWinner: record2.readNumber(),
+        })
+      );
+    }
+
+    return players.reverse();
+  }
+
+  async sendWithdrawalRequest(
+    provider: ContractProvider,
+    sender: Sender,
+    value: bigint,
+    amount: bigint
+  ) {
+    const msg_body = beginCell()
+      .storeUint(204, 32) // OP code
+      .storeCoins(amount)
+      .endCell();
+
+    await provider.internal(sender, {
+      value,
+      sendMode: SendMode.PAY_GAS_SEPARATELY,
+      body: msg_body,
+    });
+  }
+
+  async sendNewBetMinRequest(
+    provider: ContractProvider,
+    sender: Sender,
+    value: bigint,
+    amount: bigint
+  ) {
+    const msg_body = beginCell()
+      .storeUint(201, 32) // OP code
+      .storeCoins(amount)
+      .endCell();
+
+    await provider.internal(sender, {
+      value,
+      sendMode: SendMode.PAY_GAS_SEPARATELY,
+      body: msg_body,
+    });
   }
 }

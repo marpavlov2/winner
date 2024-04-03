@@ -1,0 +1,30 @@
+<div
+  class="box md:flex md:flex-row p-4 items-center justify-between cursor-pointer overflow-hidden mb-2"
+  [class.is-winner]="player.isWinner"
+>
+  <div class="flex items-center truncate pr-2">
+    <span class="text-sm mr-4 flex items-center justify-center box-number">
+      {{ totalPlayers - index }}
+    </span>
+    <div class="flex flex-col truncate">
+      <p class="text-lg truncate">{{ player.address }}</p>
+      <div class="text-gray-300">
+        <span>{{ player.isWinner ? "Winning tickets:" : "Tickets:" }} </span>
+        <span>{{ player.startTicket }}</span>
+        -
+        <span>{{ player.endTicket }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row pt-2 xl:p-4 items-center">
+    <img
+      src="../../assets/ton_symbol.svg"
+      alt="ton-symbol"
+      height="32"
+      width="32"
+    />
+    <span class="font-medium block">
+      {{ player.isWinner ? "Wins" : "Bets" }} {{ player.bet }} TON
+    </span>
+  </div>
+</div>

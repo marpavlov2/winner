@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>
+  <span class="text-2xl text-green-400">Pot of Gold</span>
+</h2>
+<mat-dialog-content>
+  <p class="text-white mb-4">
+    Pot of gold is a multiplayer mode where all players' bets are pooled
+    together to form a Pot of gold. The winner of the Jackpot takes all
+  </p>
+  <h2 class="text-lg mb-2 text-green-400">Here's how it works:</h2>
+  <div class="flex items-center mb-2">
+    <span class="text-sm mr-4 flex items-center justify-center box-number">
+      1
+    </span>
+    <p class="text-white">
+      Place your bet. The higher your bet, the higher your chance of winning
+    </p>
+  </div>
+
+  <div class="flex items-center mb-2">
+    <span class="text-sm mr-4 flex items-center justify-center box-number">
+      2
+    </span>
+    <p class="text-white">
+      Wait for the required number of transactions in the current round or place
+      new bets
+    </p>
+  </div>
+
+  <div class="flex items-center mb-2">
+    <span class="text-sm mr-4 flex items-center justify-center box-number">
+      3
+    </span>
+    <p class="text-white">
+      The winner will be selected once the required number of transactions is
+      received
+    </p>
+  </div>
+
+  <div class="flex items-center mb-6">
+    <span class="text-sm mr-4 flex items-center justify-center box-number">
+      4
+    </span>
+    <p class="text-white">
+      The winner takes all! The smart contract automatically transfers the
+      Jackpot to the winner's wallet
+    </p>
+  </div>
+
+  <p class="text-white text-center text-sm">
+    Smart contract fees: {{ fee || 0 }}% The fee is charged from the winning
+    amount excluding the winner’s transaction amount
+  </p>
+</mat-dialog-content>

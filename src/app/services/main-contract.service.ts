@@ -1,22 +1,38 @@
 import { Injectable } from '@angular/core';
-import { Address, OpenedContract, TonClient } from '@ton/ton';
-import { getHttpEndpoint } from '@orbs-network/ton-access';
+import {
+  Address,
+  OpenedContract,
+  SenderArguments,
+  TonClient4,
+  fromNano,
+  toNano,
+} from '@ton/ton';
+import { getHttpV4Endpoint } from '@orbs-network/ton-access';
 import { MainContract } from '../../wrappers/MainContract';
+import { THEME, TonConnectUI } from '@tonconnect/ui';
+import { TonConnectService } from '../ton-connect.service';
+import { Player } from '../player.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainContractService {
-  contractAddress = 'EQA4QN9z54gwFoFZRLkFRsbkp2d9xNUz_b8zM5FUbitj7Slz';
+  contractAddress = 'EQDUrOIt7J2-wXkizz42NTuW4Z8Rd3Y25EXDENIJpr9M8VBa';
   feePercent: number;
   betMin: string;
+  betMax: string;
   playersMax: number;
   playersCurrent: number;
   lockedBalance: string;
+  closestTicket: number;
+  transactions: any;
+  currentRound: Player[] = [];
+  lastRound: Player[] = [];
+  winner: Player | undefined;
 
   isDialogVisible: boolean;
 
-  constructor() {}
+  constructor(private _tonService: TonConnectService) {}
 
   async useMainContract() {
     const client = await this.useTonClient();
@@ -28,38 +44,80 @@ export class MainContractService {
     );
 
     const mainContract = client.open(contract) as OpenedContract<MainContract>;
-    console.log(
-      await client.getTransactions(
-        Address.parse('EQA4QN9z54gwFoFZRLkFRsbkp2d9xNUz_b8zM5FUbitj7Slz'),
-        { limit: 10 }
-      ),
-      'transactions'
-    );
     // Fetch all contract data concurrently
-    const [feePercent, betMin, playersMax, playersCurrent, lockedBalance] =
-      await Promise.all([
-        mainContract.getFeePercent(),
-        mainContract.getBetMin(),
-        mainContract.getPlayersMax(),
-        mainContract.getPlayersCurrent(),
-        mainContract.getLockedBalance(),
-      ]);
+    const [
+      feePercent,
+      betMin,
+      betMax,
+      playersMax,
+      playersCurrent,
+      lockedBalance,
+      closestTicket,
+      currentRound,
+      lastRound,
+    ] = await Promise.all([
+      mainContract.getFeePercent(),
+      mainContract.getBetMin(),
+      mainContract.getBetMax(),
+      mainContract.getPlayersMax(),
+      mainContract.getPlayersCurrent(),
+      mainContract.getLockedBalance(),
+      mainContract.getLuckyTicket(),
+      mainContract.getCurrentRound(),
+      mainContract.getLastRound(),
+    ]);
+
+    /* mainContract.sendWithdrawalRequest(
+      this._tonService.sender,
+      toNano('0.05'),
+      toNano('0.05')
+    ); */
+
+    /* mainContract.sendNewBetMinRequest(
+      this._tonService.sender,
+      toNano('0.05'),
+      toNano('1')
+    ); */
 
     // Assign fetched data to class properties
     this.feePercent = feePercent;
     this.betMin = betMin;
+    this.betMax = betMax;
     this.playersMax = playersMax;
     this.playersCurrent = playersCurrent;
     this.lockedBalance = lockedBalance;
+    this.closestTicket = closestTicket;
+    this.currentRound = currentRound;
+    this.lastRound = lastRound;
+
+    this.findWinner(lastRound);
   }
 
-  async useTonClient(): Promise<TonClient> {
+  findWinner(players: Player[]) {
+    this.winner = players.find((player) => player.isWinner === 1);
+    this.lastRound = players.filter((player) => player.id !== this.winner!.id);
+    /*  if (winner) {
+      this.lastRound = players.filter((player) => player.id !== winner.id);
+      this.winner = this.lastRound.find(
+        (player) =>
+          player.startTicket === winner.startTicket &&
+          player.endTicket === winner.endTicket
+      );
+      console.log(this.lastRound, 'lastRound');
+
+      this.winner!.isWinner = 1;
+
+      console.log(this.winner, 'winner');
+    } */
+  }
+
+  async useTonClient(): Promise<TonClient4> {
     // get the decentralized RPC endpoint
-    const endpoint = await getHttpEndpoint({
+    const endpoint = await getHttpV4Endpoint({
       network: 'testnet',
     });
 
     // initialize ton library
-    return new TonClient({ endpoint });
+    return new TonClient4({ endpoint });
   }
 }

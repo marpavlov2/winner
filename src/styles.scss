@@ -1,4 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+html,
+body {
+  background-color: #11031c;
+}
+
+.snackbar-layout {
+  color: #fff;
+  background-color: #11031c;
+}
+
+.custom-dialog
+  .mat-mdc-dialog-container
+  .mdc-dialog__container
+  .mat-mdc-dialog-surface {
+  background-color: #11031c;
+  color: #fff;
+}
+
+.bg-dark-purple {
+  background-color: #11031c;
+}
+
+.bg-light-purple {
+  background-color: #190c25;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle, #a041fd, #420b6e);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0c011f;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4ade80;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #32d16c;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

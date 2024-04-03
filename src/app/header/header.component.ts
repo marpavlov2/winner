@@ -1,10 +1,24 @@
 import { Component } from '@angular/core';
 import { THEME, TonConnectUI } from '@tonconnect/ui';
+import { heroTrophy } from '@ng-icons/heroicons/outline';
+import {
+  NgIconComponent,
+  provideIcons,
+  provideNgIconsConfig,
+} from '@ng-icons/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [NgIconComponent],
+  providers: [
+    provideIcons({
+      heroTrophy,
+    }),
+    provideNgIconsConfig({
+      size: '1.5em',
+    }),
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -23,7 +37,7 @@ export class HeaderComponent {
         colorsSet: {
           [THEME.DARK]: {
             connectButton: {
-              background: '#75c4ee',
+              background: '#4ade80',
             },
           },
         },

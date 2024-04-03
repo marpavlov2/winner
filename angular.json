@@ -25,6 +25,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
               "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
             ],
@@ -80,6 +81,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
               "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
             ],
