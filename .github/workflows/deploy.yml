@@ -1,0 +1,50 @@
+name: earnplaying
+
+on:
+  push:
+    branches: [master, development]
+  pull_request:
+    branches: [master, development]
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: SetupNode
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.11.0"
+
+      - name: InstalNPM
+        run: npm install -g npm
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Zip Build
+        run: zip -r earn-playing dist/win-frontend/browser
+
+      - name: Setup SSH
+        uses: kielabokkie/ssh-key-and-known-host-action@v1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY}}
+          ssh-host: 16.171.232.238
+
+      - name: Add SSH key to known hosts
+        run: |
+          ssh-keyscan -H 16.171.232.238 >> ~/.ssh/known_host
+
+      - name: SCP Zip to Server
+        run: |
+          scp dist/win-frontend/browser/earn-playing.zip ubuntu@16.171.232.238:~/.
+
+      - name: Unzip and Finish deploy
+        run: |
+          ssh ubuntu@16.171.232.238 'sudo rm -rf /var/www/html/*'
+          ssh ubuntu@16.171.232.238 'sudo unzip ~/earn-playing.zip -d /var/www/html/'
