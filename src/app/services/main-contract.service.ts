@@ -9,7 +9,7 @@ import { Player } from '../player.model';
   providedIn: 'root',
 })
 export class MainContractService {
-  contractAddress = 'EQDUrOIt7J2-wXkizz42NTuW4Z8Rd3Y25EXDENIJpr9M8VBa';
+  contractAddress = 'EQCgcmiMffDhYuf3dvGheCLahpin49eLSIa9AtIdOWbcr55T';
   feePercent: number;
   betMin: string;
   betMax: string;
@@ -91,7 +91,7 @@ export class MainContractService {
 
     setInterval(() => {
       this.refreshData();
-    }, 2000);
+    }, 3000);
   }
 
   async refreshData() {
@@ -125,9 +125,7 @@ export class MainContractService {
 
   async useTonClient(): Promise<TonClient4> {
     // get the decentralized RPC endpoint
-    const endpoint = await getHttpV4Endpoint({
-      network: 'testnet',
-    });
+    const endpoint = await getHttpV4Endpoint();
 
     // initialize ton library
     return new TonClient4({ endpoint });

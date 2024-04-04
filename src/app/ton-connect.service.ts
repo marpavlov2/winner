@@ -15,7 +15,7 @@ export class TonConnectService {
   initializeTonConnectUI() {
     this.tonConnectUI = new TonConnectUI({
       manifestUrl:
-        'https://raw.githubusercontent.com/earnplaying/earnplaying/main/tonconnect-manifest.json',
+        'https://raw.githubusercontent.com/earnplayingorg/potofgold/main/tonconnect-manifest.json',
       buttonRootId: 'ton-wallet-button',
     });
 

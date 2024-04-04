@@ -25,7 +25,6 @@ import {
   heroTrophy,
   heroBanknotes,
 } from '@ng-icons/heroicons/outline';
-import { Player } from './player.model';
 import { TonConnectService } from './ton-connect.service';
 import { Address, toNano } from '@ton/core';
 
@@ -99,7 +98,7 @@ export class AppComponent {
   }
 
   copyMessage(): void {
-    this._snackBar.open('Copied', '', {
+    this._snackBar.open('Address is copied to clipboard', '', {
       verticalPosition: 'bottom',
       duration: 2000,
       panelClass: 'custom-snackbar',

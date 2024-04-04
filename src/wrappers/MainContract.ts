@@ -111,7 +111,6 @@ export class MainContract implements Contract {
         })
       );
     }
-    console.log(players);
     return players.reverse();
   }
 
