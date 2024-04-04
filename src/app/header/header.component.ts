@@ -9,11 +9,12 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { GameInfoDialogComponent } from '../game-info-dialog/game-info-dialog.component';
 import { MainContractService } from '../services/main-contract.service';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIconComponent, GameInfoDialogComponent],
+  imports: [NgIconComponent, GameInfoDialogComponent, LottieComponent],
   providers: [
     provideIcons({
       heroTrophy,
@@ -26,10 +27,15 @@ import { MainContractService } from '../services/main-contract.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  options: AnimationOptions = {
+    path: '/assets/earnplaying.json',
+  };
+
   constructor(
     public dialog: MatDialog,
     public mainContractService: MainContractService
   ) {}
+
   async ngAfterViewInit() {
     const tonConnectUI = new TonConnectUI({
       manifestUrl:
@@ -54,7 +60,7 @@ export class HeaderComponent {
 
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(GameInfoDialogComponent, {
-      width: '680px',
+      width: '868px',
       panelClass: 'custom-dialog',
     });
 

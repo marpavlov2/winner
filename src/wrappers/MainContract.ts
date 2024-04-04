@@ -100,13 +100,16 @@ export class MainContract implements Contract {
     let record = result.readTuple();
     while (record.remaining) {
       let record2 = record.readTuple();
-      players.push({
-        id: uid(16),
-        address: Address.normalize(record2.readAddress()),
-        startTicket: record2.readBigNumber(),
-        endTicket: record2.readBigNumber(),
-        bet: fromNano(record2.readBigNumber()),
-      });
+      players.push(
+        new Player({
+          id: uid(16),
+          address: Address.normalize(record2.readAddress()),
+          startTicket: record2.readBigNumber(),
+          endTicket: record2.readBigNumber(),
+          bet: fromNano(record2.readBigNumber()),
+          isWinner: 0,
+        })
+      );
     }
     console.log(players);
     return players.reverse();

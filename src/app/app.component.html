@@ -2,26 +2,23 @@
   <app-header class="sticky top-0"></app-header>
   <div class="main-wrapper">
     <div class="container mx-auto text-white pb-4">
-      <div class="flex items-center justify-between py-4">
-        <div class="cursor-pointer rounded-lg py-2 px-3 flex items-center">
-          <ng-icon class="mr-2" name="heroBanknotes"></ng-icon>
-          <h2 class="text-sm font-medium tracking-wide">Pot of Gold</h2>
-        </div>
-
+      <div class="flex items-center justify-end py-4">
         <app-social-icons></app-social-icons>
       </div>
 
-      <div class="p-4 mb-8 bg-light-purple rounded-lg">
-        <div class="flex justify-between">
-          <div class="flex flex-col justify-between">
-            <div class="flex flex-col">
+      <div class="p-4 mb-4 bg-light-purple rounded-lg">
+        <div class="flex flex-col-reverse sm:flex-row justify-between">
+          <div class="flex flex-col justify-between mr-2">
+            <div class="flex flex-col text-center sm:text-left mb-4 sm:mb-0">
               <h2 class="font-light mb-2">Deposit Address:</h2>
               <div class="md:flex items-center overflow-hidden">
                 <div class="flex items-center">
                   <span class="truncate mr-2">
                     {{ mainContractService.contractAddress }}
                   </span>
+
                   <ng-icon
+                    class="min-w-7 cursor-pointer"
                     name="heroClipboardDocument"
                     (click)="copyMessage()"
                   ></ng-icon>
@@ -29,34 +26,34 @@
               </div>
             </div>
 
-            <div>
-              <div class="flex">
-                <span class="bg-dark-purple p-2 text-sm">
-                  Min Bet:
-                  <span class="text-gray-300">
-                    {{ mainContractService.betMin || 0 }} TON
-                  </span>
+            <div class="flex justify-center sm:justify-start">
+              <span class="bg-dark-purple p-2 text-sm">
+                Min Bet:
+                <span class="text-gray-300">
+                  {{ mainContractService.betMin || 0 }} TON
                 </span>
+              </span>
 
-                <span>&nbsp;</span>
-                <span>&nbsp;</span>
+              <span>&nbsp;</span>
+              <span>&nbsp;</span>
 
-                <span class="bg-dark-purple p-2 text-sm">
-                  Max Bet:
-                  <span class="text-gray-300">
-                    {{ mainContractService.betMax || 0 }} TON
-                  </span>
+              <span class="bg-dark-purple p-2 text-sm">
+                Max Bet:
+                <span class="text-gray-300">
+                  {{ mainContractService.betMax || 0 }} TON
                 </span>
-              </div>
+              </span>
             </div>
           </div>
 
-          <img
-            src="../../assets/qr-code.svg"
-            alt="ton-symbol"
-            height="132"
-            width="132"
-          />
+          <div class="flex justify-center">
+            <img
+              src="../../assets/qr-code.svg"
+              alt="ton-symbol"
+              height="132"
+              width="132"
+            />
+          </div>
         </div>
       </div>
 
@@ -86,7 +83,7 @@
           </div>
         </div>
         <!-- Step Progress -->
-        <div class="w-full flex items-center gap-x-1 mb-4">
+        <div class="step-progress w-full flex items-center gap-x-1 mb-4">
           <div
             *ngFor="
               let num of [].constructor(mainContractService.playersMax);
@@ -106,7 +103,7 @@
         <!-- End Step Progress -->
       </div>
 
-      <div class="bg-light-purple rounded-lg p-6 mb-4">
+      <div class="sm:bg-light-purple rounded-lg sm:p-6 mb-4">
         <h2 class="font-light mb-6">Current Round:</h2>
         <div class="mb-8">
           <div
@@ -139,13 +136,13 @@
         </div>
       </div>
 
-      <div class="bg-light-purple rounded-lg p-6">
+      <div class="sm:bg-light-purple rounded-lg sm:p-6">
         <div class="flex items-center justify-between mb-6">
           <h2 class="font-light">Last Round:</h2>
 
           <div class="flex justify-center">
             <div
-              class="flex items-center justify-center bg-dark-purple py-2 px-4 rounded-lg"
+              class="flex items-center justify-center bg-light-purple sm:bg-dark-purple py-2 px-4 rounded-lg"
             >
               <span class="text-xs tracking-wider uppercase font-medium">
                 Lucky Ticket:

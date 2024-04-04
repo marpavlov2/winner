@@ -1,10 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../player.model';
+import {
+  NgIconComponent,
+  provideIcons,
+  provideNgIconsConfig,
+} from '@ng-icons/core';
+import { heroTrophy } from '@ng-icons/heroicons/outline';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, NgIconComponent],
+  providers: [
+    provideIcons({
+      heroTrophy,
+    }),
+    provideNgIconsConfig({
+      size: '1.3em',
+    }),
+  ],
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss',
 })

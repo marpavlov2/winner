@@ -65,7 +65,7 @@ export class MainContractService {
     this.playersMax = playersMax;
     this.playersCurrent = playersCurrent;
     this.lockedBalance = lockedBalance;
-    this.closestTicket = closestTicket;
+    this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
     this.currentRound = currentRound;
     this.lastRound = lastRound;
 
@@ -91,7 +91,7 @@ export class MainContractService {
 
     setInterval(() => {
       this.refreshData();
-    }, 3000);
+    }, 15000);
   }
 
   async refreshData() {
@@ -111,7 +111,7 @@ export class MainContractService {
 
     this.playersCurrent = playersCurrent;
     this.lockedBalance = lockedBalance;
-    this.closestTicket = closestTicket;
+    this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
     this.currentRound = currentRound;
     this.lastRound = lastRound;
 
