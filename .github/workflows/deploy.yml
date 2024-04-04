@@ -42,7 +42,7 @@ jobs:
 
       - name: SCP Zip to Server
         run: |
-          scp dist/win-frontend/browser/earn-playing.zip ubuntu@51.21.135.90:~/.
+          scp earn-playing.zip ubuntu@51.21.135.90:~/.
 
       - name: Unzip and Finish deploy
         run: |
