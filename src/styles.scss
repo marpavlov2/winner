@@ -14,16 +14,17 @@ body {
   background-color: #11031c;
 }
 
-.custom-dialog
-  .mat-mdc-dialog-container
-  .mdc-dialog__container
-  .mat-mdc-dialog-surface {
+.mat-mdc-dialog-container .mdc-dialog__container .mat-mdc-dialog-surface {
   background-color: #331f46;
   color: #fff;
 }
 
-.bg-radial-gradient {
-  background: radial-gradient(circle, #a041fd, #420b6e);
+.mat-mdc-snack-bar-container {
+  &.custom-snackbar {
+    --mdc-snackbar-container-color: #331f46;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
 }
 
 /* width */

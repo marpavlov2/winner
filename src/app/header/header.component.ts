@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { THEME, TonConnectUI } from '@tonconnect/ui';
 import { heroTrophy } from '@ng-icons/heroicons/outline';
 import {
   NgIconComponent,
@@ -10,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GameInfoDialogComponent } from '../game-info-dialog/game-info-dialog.component';
 import { MainContractService } from '../services/main-contract.service';
 import { LottieComponent, AnimationOptions } from 'ngx-lottie';
+import { TonConnectService } from '../ton-connect.service';
 
 @Component({
   selector: 'app-header',
@@ -33,35 +33,17 @@ export class HeaderComponent {
 
   constructor(
     public dialog: MatDialog,
+    private _tonConnectService: TonConnectService,
     public mainContractService: MainContractService
   ) {}
 
   async ngAfterViewInit() {
-    const tonConnectUI = new TonConnectUI({
-      manifestUrl:
-        'https://raw.githubusercontent.com/marpavlov2/winner/master/tonconnect-manifest.json',
-      buttonRootId: 'ton-wallet-button',
-    });
-
-    tonConnectUI.uiOptions = {
-      language: 'en',
-      uiPreferences: {
-        theme: THEME.DARK,
-        colorsSet: {
-          [THEME.DARK]: {
-            connectButton: {
-              background: '#4ade80',
-            },
-          },
-        },
-      },
-    };
+    this._tonConnectService.initializeTonConnectUI();
   }
 
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(GameInfoDialogComponent, {
       width: '868px',
-      panelClass: 'custom-dialog',
     });
 
     dialogRef.componentInstance.fee = this.mainContractService.feePercent;

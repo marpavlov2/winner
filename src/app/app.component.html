@@ -7,7 +7,7 @@
       </div>
 
       <div class="p-4 mb-4 bg-light-purple rounded-lg">
-        <div class="flex flex-col-reverse sm:flex-row justify-between">
+        <div class="flex flex-col-reverse sm:flex-row justify-between mb-4">
           <div class="flex flex-col justify-between mr-2">
             <div class="flex flex-col text-center sm:text-left mb-4 sm:mb-0">
               <h2 class="font-light mb-2">Deposit Address:</h2>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="flex justify-center sm:justify-start">
-              <span class="bg-dark-purple p-2 text-sm">
+              <span class="bg-dark-purple rounded-lg p-2 text-sm">
                 Min Bet:
                 <span class="text-gray-300">
                   {{ mainContractService.betMin || 0 }} TON
@@ -37,7 +37,7 @@
               <span>&nbsp;</span>
               <span>&nbsp;</span>
 
-              <span class="bg-dark-purple p-2 text-sm">
+              <span class="bg-dark-purple rounded-lg p-2 text-sm">
                 Max Bet:
                 <span class="text-gray-300">
                   {{ mainContractService.betMax || 0 }} TON
@@ -55,88 +55,58 @@
             />
           </div>
         </div>
+        <button
+          (click)="placeBet()"
+          class="bg-green-400 transition ease-in-out hover:scale-105 text-white text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto"
+        >
+          Place Bet
+        </button>
       </div>
 
-      <div
-        class="bg-radial-gradient rounded-lg flex flex-col items-center justify-center p-4 text-white mb-4"
-      >
-        <span class="text-3xl mb-2 font-bold tracking-wider">REWARD</span>
-        <div class="flex flex-row items-center">
-          <img
-            src="../../assets/ton_symbol.svg"
-            alt="ton-symbol"
-            height="32"
-            width="32"
-          />
-          <span class="text-lg">
-            {{ mainContractService.lockedBalance || 0 }} TON
-          </span>
-        </div>
-      </div>
+      <app-reward
+        [lockedBalance]="mainContractService.lockedBalance"
+      ></app-reward>
 
-      <div class="bg-light-purple rounded-lg p-4 mb-4">
-        <div class="flex items-center justify-between">
-          <h2 class="font-light mb-4">Players in round:</h2>
-          <div>
-            <span> {{ mainContractService.playersCurrent || 0 }}</span> /
-            <span> {{ mainContractService.playersMax || 0 }}</span>
-          </div>
-        </div>
-        <!-- Step Progress -->
-        <div class="step-progress w-full flex items-center gap-x-1 mb-4">
+      <app-players-in-round
+        [playersCurrent]="mainContractService.playersCurrent"
+        [playersMax]="mainContractService.playersMax"
+      ></app-players-in-round>
+
+      <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6 mb-4">
+        <h2 class="font-light mb-6">Current Round:</h2>
+
+        <div
+          *ngIf="
+            mainContractService.currentRound.length;
+            else noPlayersCurrentRound
+          "
+        >
           <div
             *ngFor="
-              let num of [].constructor(mainContractService.playersMax);
-              let i = index
-            "
-            [ngClass]="{
-              'bg-green-400': i < mainContractService.playersCurrent,
-              'bg-gray-100': i >= mainContractService.playersCurrent
-            }"
-            class="w-full h-2.5 flex flex-col justify-center overflow-hidden text-xs text-center whitespace-nowrap"
-            role="progressbar"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-        <!-- End Step Progress -->
-      </div>
-
-      <div class="sm:bg-light-purple rounded-lg sm:p-6 mb-4">
-        <h2 class="font-light mb-6">Current Round:</h2>
-        <div class="mb-8">
-          <div
-            *ngIf="
-              mainContractService.currentRound.length;
-              else noPlayersCurrentRound
+              let player of mainContractService.currentRound;
+              let i = index;
+              trackBy: identify
             "
           >
-            <div
-              *ngFor="
-                let player of mainContractService.currentRound;
-                let i = index
-              "
-            >
-              <app-player
-                [player]="player"
-                [index]="i"
-                [totalPlayers]="mainContractService.currentRound.length"
-              ></app-player>
-            </div>
+            <app-player
+              [player]="player"
+              [index]="i"
+              [totalPlayers]="mainContractService.currentRound.length"
+              data-aos="fade-up"
+            ></app-player>
           </div>
-
-          <ng-template #noPlayersCurrentRound>
-            <div class="flex flex-col items-center justify-center p-4">
-              <ng-icon size="32px" class="mb-2" name="heroUsers"></ng-icon>
-              <p class="font-lg">No player bets in this round</p>
-            </div>
-            <p></p>
-          </ng-template>
         </div>
+
+        <ng-template #noPlayersCurrentRound>
+          <div class="flex flex-col items-center justify-center p-4">
+            <ng-icon size="32px" class="mb-2" name="heroUsers"></ng-icon>
+            <p class="font-lg">No player bets in this round</p>
+          </div>
+          <p></p>
+        </ng-template>
       </div>
 
-      <div class="sm:bg-light-purple rounded-lg sm:p-6">
+      <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6">
         <div class="flex items-center justify-between mb-6">
           <h2 class="font-light">Last Round:</h2>
 
@@ -148,7 +118,7 @@
                 Lucky Ticket:
               </span>
               <span>&nbsp;</span>
-              <span>
+              <span class="text-xl text-green-400">
                 {{ mainContractService.closestTicket || 0 }}
               </span>
             </div>
@@ -160,18 +130,24 @@
           [player]="mainContractService.winner"
           [index]="0"
           [totalPlayers]="mainContractService.playersMax + 1"
+          data-aos="fade-up"
         ></app-player>
 
         <div
           *ngIf="mainContractService.lastRound.length; else noPlayersLastRound"
         >
           <div
-            *ngFor="let player of mainContractService.lastRound; let i = index"
+            *ngFor="
+              let player of mainContractService.lastRound;
+              let i = index;
+              trackBy: identify
+            "
           >
             <app-player
               [player]="player"
               [index]="i"
               [totalPlayers]="mainContractService.lastRound.length"
+              data-aos="fade-up"
             ></app-player>
           </div>
         </div>

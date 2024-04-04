@@ -3,7 +3,9 @@
   [class.is-winner]="player.isWinner"
 >
   <div class="flex items-center truncate pr-2">
-    <span class="text-sm mr-4 flex items-center justify-center box-number">
+    <span
+      class="text-sm mr-4 flex items-center justify-center box-number bg-contrast-purple"
+    >
       <div
         class="flex items-center justify-center"
         *ngIf="player.isWinner; else showIndex"

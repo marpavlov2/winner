@@ -12,6 +12,28 @@ export class TonConnectService {
 
   constructor() {}
 
+  initializeTonConnectUI() {
+    this.tonConnectUI = new TonConnectUI({
+      manifestUrl:
+        'https://raw.githubusercontent.com/earnplaying/earnplaying/main/tonconnect-manifest.json',
+      buttonRootId: 'ton-wallet-button',
+    });
+
+    this.tonConnectUI.uiOptions = {
+      language: 'en',
+      uiPreferences: {
+        theme: THEME.DARK,
+        colorsSet: {
+          [THEME.DARK]: {
+            connectButton: {
+              background: '#4ade80',
+            },
+          },
+        },
+      },
+    };
+  }
+
   async getSender() {
     this.sender = {
       send: async (args: SenderArguments) => {
@@ -27,7 +49,6 @@ export class TonConnectService {
         });
       },
     };
-    console.log(this.sender);
     this.connected = this.tonConnectUI.connected;
   }
 

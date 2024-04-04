@@ -83,15 +83,15 @@ export class MainContractService {
       toNano('1')
     ); */
 
-    this.mainContract.sendNewBetPlayersMaxRequest(
+    /* this.mainContract.sendNewBetPlayersMaxRequest(
       this._tonService.sender,
       toNano('0.05'),
       10
-    );
+    ); */
 
     setInterval(() => {
       this.refreshData();
-    }, 15000);
+    }, 2000);
   }
 
   async refreshData() {

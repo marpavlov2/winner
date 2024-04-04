@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MainContractService } from './services/main-contract.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './header/header.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
+import { PlayerComponent } from './player/player.component';
+import { GameInfoDialogComponent } from './game-info-dialog/game-info-dialog.component';
+import { SocialIconsComponent } from './social-icons/social-icons.component';
+import { RewardComponent } from './reward/reward.component';
+import { PlayersInRoundComponent } from './players-in-round/players-in-round.component';
+import AOS from 'aos';
+
 import {
   NgIconComponent,
   provideIcons,
   provideNgIconsConfig,
 } from '@ng-icons/core';
-import { CommonModule } from '@angular/common';
-import { PlayerComponent } from './player/player.component';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   heroQrCode,
   heroClipboardDocument,
@@ -18,9 +25,9 @@ import {
   heroTrophy,
   heroBanknotes,
 } from '@ng-icons/heroicons/outline';
-import { MatDialog } from '@angular/material/dialog';
-import { GameInfoDialogComponent } from './game-info-dialog/game-info-dialog.component';
-import { SocialIconsComponent } from './social-icons/social-icons.component';
+import { Player } from './player.model';
+import { TonConnectService } from './ton-connect.service';
+import { Address, toNano } from '@ton/core';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +42,8 @@ import { SocialIconsComponent } from './social-icons/social-icons.component';
     MatSnackBarModule,
     GameInfoDialogComponent,
     SocialIconsComponent,
+    RewardComponent,
+    PlayersInRoundComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -54,26 +63,46 @@ import { SocialIconsComponent } from './social-icons/social-icons.component';
 export class AppComponent {
   constructor(
     public mainContractService: MainContractService,
+    private _tonConnectService: TonConnectService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {}
 
   async ngOnInit() {
+    AOS.init();
     this.mainContractService.useMainContract();
   }
 
+  placeBet() {
+    if (this._tonConnectService.tonConnectUI.connected) {
+      this._tonConnectService.sendTransaction({
+        value: toNano(1),
+        to: Address.parse(this.mainContractService.contractAddress),
+      });
+    } else {
+      this._snackBar.open('Wallet not connected', '', {
+        verticalPosition: 'bottom',
+        duration: 3000,
+        panelClass: 'custom-snackbar',
+      });
+    }
+  }
+
   qrCodeDialog(): void {
-    const dialogRef = this.dialog.open(QrCodeDialogComponent, {
+    this.dialog.open(QrCodeDialogComponent, {
       width: '380px',
-      panelClass: 'custom-dialog',
     });
+  }
+
+  identify(index: number): number {
+    return index;
   }
 
   copyMessage(): void {
     this._snackBar.open('Copied', '', {
       verticalPosition: 'bottom',
-      panelClass: 'snackbar-layout',
-      duration: 1000,
+      duration: 2000,
+      panelClass: 'custom-snackbar',
     });
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';

@@ -1,0 +1,25 @@
+<div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6 mb-4">
+  <div class="flex items-center justify-between">
+    <h2 class="font-light mb-4">Players in round:</h2>
+    <div>
+      <span> {{ playersCurrent || 0 }}</span> /
+      <span> {{ playersMax || 0 }}</span>
+    </div>
+  </div>
+  <!-- Step Progress -->
+  <div class="step-progress w-full flex items-center gap-x-1 mb-4">
+    <div
+      *ngFor="let num of [].constructor(playersMax); let i = index"
+      [ngClass]="{
+        'bg-green-400': i < playersCurrent,
+        'bg-contrast-purple': i >= playersCurrent
+      }"
+      class="w-full h-2.5 flex flex-col justify-center overflow-hidden text-xs text-center whitespace-nowrap"
+      role="progressbar"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+  <!-- End Step Progress -->
+</div>

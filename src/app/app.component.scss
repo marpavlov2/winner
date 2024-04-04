@@ -2,20 +2,6 @@
   min-height: 100%;
   box-sizing: border-box;
 
-  .main-wrapper {
-    height: calc(100vh - 65px);
-    overflow-y: scroll;
-
-    .step-progress {
-      :first-child {
-        border-radius: 4px 0px 0px 4px;
-      }
-      :last-child {
-        border-radius: 0px 4px 4px 0px;
-      }
-    }
-  }
-
   #ton-wallet-button {
     background: #4ade80;
     border: 0;

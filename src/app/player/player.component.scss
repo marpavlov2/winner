@@ -9,11 +9,10 @@
   .box-number {
     min-width: 32px;
     min-height: 32px;
-    background-color: #331f46;
     border-radius: 100%;
   }
 
   &.is-winner {
-    background: linear-gradient(145deg, #a041fd, #61d4a5);
+    background: linear-gradient(145deg, #a041fd, #48d97e);
   }
 }

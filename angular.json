@@ -25,11 +25,12 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/aos/dist/aos.css",
               "@angular/material/prebuilt-themes/purple-green.css",
               "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/aos/dist/aos.js"]
           },
           "configurations": {
             "production": {
@@ -81,6 +82,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/aos/dist/aos.css",
               "@angular/material/prebuilt-themes/purple-green.css",
               "node_modules/normalize.css/normalize.css",
               "src/styles.scss"
