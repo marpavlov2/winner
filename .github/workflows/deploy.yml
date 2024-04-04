@@ -31,14 +31,14 @@ jobs:
         run: zip -r earn-playing dist/win-frontend/browser
 
       - name: Setup SSH
-        uses: kielabokkie/ssh-key-and-known-host-action@v1
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY}}
           ssh-host: 16.171.232.238
 
       - name: Add SSH key to known hosts
         run: |
-          ssh-keyscan -H 16.171.232.238 >> ~/.ssh/known_host
+          ssh-keyscan -H 16.171.232.238 >> ~/.ssh/known_hosts
 
       - name: SCP Zip to Server
         run: |
