@@ -67,12 +67,12 @@ export class AppComponent {
     public dialog: MatDialog
   ) {}
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     AOS.init();
     this.mainContractService.useMainContract();
   }
 
-  placeBet() {
+  placeBet(): void {
     if (this._tonConnectService.tonConnectUI.connected) {
       this._tonConnectService.sendTransaction({
         value: toNano(1),
@@ -85,6 +85,14 @@ export class AppComponent {
         panelClass: 'custom-snackbar',
       });
     }
+  }
+
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(GameInfoDialogComponent, {
+      width: '868px',
+    });
+
+    dialogRef.componentInstance.fee = this.mainContractService.feePercent;
   }
 
   qrCodeDialog(): void {
