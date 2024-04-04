@@ -34,7 +34,7 @@ jobs:
         uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY}}
-          ssh-host: 16.171.232.238
+          ssh-host: 51.21.135.90
 
       - name: Add SSH key to known hosts
         run: |
