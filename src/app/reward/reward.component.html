@@ -1,16 +1,15 @@
 <div
   class="rounded-lg flex flex-col items-center justify-center p-4 text-white my-4"
 >
-  <span class="tracking-widest text-2xl text-light-gold mb-1">
+  <span class="tracking-widest text-2xl text-green-400 mb-2">
     ROUND REWARD
   </span>
-  <div class="flex flex-row items-center pr-5">
-    <img
-      src="../../assets/ton_symbol.svg"
-      alt="ton-symbol"
-      height="48"
-      width="48"
-    />
-    <span class="text-3xl font-bold"> {{ lockedBalance || 0 }} TON </span>
+
+  <div class="relative">
+    <ng-lottie [options]="options" width="182px" height="48px" />
+  </div>
+
+  <div class="flex flex-row items-center mt-4">
+    <span class="text-xl font-bold"> {{ lockedBalance || 0 }} TON </span>
   </div>
 </div>

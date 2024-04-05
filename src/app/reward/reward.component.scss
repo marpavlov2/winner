@@ -1,12 +1,13 @@
-.first-ton,
-.second-ton,
-.third-ton {
+.ton-icon {
   position: absolute;
-}
-
-.first-ton {
-  top: 0;
-  left: 0;
-  width: 48px;
-  height: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45px);
+  svg {
+    fill: aqua;
+    color: aqua;
+  }
+  fill: aqua;
+  color: aqua;
 }
