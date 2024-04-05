@@ -23,7 +23,7 @@ import {
   heroClipboardDocument,
   heroUsers,
   heroTrophy,
-  heroBanknotes,
+  heroRocketLaunch,
 } from '@ng-icons/heroicons/outline';
 import { TonConnectService } from './ton-connect.service';
 import { Address, toNano } from '@ton/core';
@@ -52,7 +52,7 @@ import { Address, toNano } from '@ton/core';
       heroClipboardDocument,
       heroUsers,
       heroTrophy,
-      heroBanknotes,
+      heroRocketLaunch,
     }),
     provideNgIconsConfig({
       size: '1.5em',

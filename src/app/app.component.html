@@ -1,16 +1,15 @@
 <div class="app-container">
   <app-header class="sticky top-0 z-10"></app-header>
+
+  <app-reward [lockedBalance]="mainContractService.lockedBalance"></app-reward>
+
   <div class="main-wrapper">
     <div class="container mx-auto text-white pb-4">
-      <div class="flex items-center justify-end py-4">
-        <app-social-icons></app-social-icons>
-      </div>
-
       <div class="p-4 mb-4 bg-light-purple rounded-lg">
-        <div class="flex flex-col-reverse sm:flex-row justify-between mb-4">
+        <div class="flex flex-col-reverse sm:flex-row justify-between">
           <div class="flex flex-col justify-between mr-2">
             <div class="flex flex-col text-center sm:text-left mb-4 sm:mb-0">
-              <h2 class="font-light mb-2">Deposit Address:</h2>
+              <h2 class="mb-2">Deposit Address:</h2>
               <div class="md:flex items-center overflow-hidden">
                 <div class="flex items-center">
                   <span class="truncate mr-2">
@@ -33,22 +32,33 @@
             </p>
 
             <div class="flex justify-center sm:justify-start">
-              <span class="bg-dark-purple rounded-lg p-2 text-sm">
+              <span
+                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+              >
                 Min Bet:
+                <span>&nbsp;</span>
                 <span class="text-gray-300">
                   {{ mainContractService.betMin || 0 }} TON
                 </span>
               </span>
 
-              <span>&nbsp;</span>
-              <span>&nbsp;</span>
-
-              <span class="bg-dark-purple rounded-lg p-2 text-sm">
+              <span
+                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm sm:mr-4"
+              >
                 Max Bet:
+                <span>&nbsp;</span>
                 <span class="text-gray-300">
                   {{ mainContractService.betMax || 0 }} TON
                 </span>
               </span>
+
+              <button
+                (click)="placeBet()"
+                class="bg-green-400 hidden sm:flex items-center transition ease-in-out hover:scale-105 text-dark-purple text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto"
+              >
+                <ng-icon class="mr-2" name="heroRocketLaunch"></ng-icon>
+                Place Bet
+              </button>
             </div>
           </div>
 
@@ -63,15 +73,12 @@
         </div>
         <button
           (click)="placeBet()"
-          class="bg-green-400 transition ease-in-out hover:scale-105 text-white text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto"
+          class="bg-green-400 transition ease-in-out hover:scale-105 text-dark-purple text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto flex items-center justify-center sm:hidden mt-4"
         >
+          <ng-icon class="mr-2" name="heroRocketLaunch"></ng-icon>
           Place Bet
         </button>
       </div>
-
-      <app-reward
-        [lockedBalance]="mainContractService.lockedBalance"
-      ></app-reward>
 
       <app-players-in-round
         [playersCurrent]="mainContractService.playersCurrent"
@@ -79,7 +86,7 @@
       ></app-players-in-round>
 
       <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6 mb-4">
-        <h2 class="font-light mb-6">Current Round:</h2>
+        <h2 class="mb-6">Current Round:</h2>
 
         <div
           *ngIf="
@@ -114,7 +121,7 @@
 
       <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6">
         <div class="flex items-center justify-between mb-6">
-          <h2 class="font-light">Last Round:</h2>
+          <h2>Last Round:</h2>
 
           <div class="flex justify-center">
             <div
@@ -124,7 +131,7 @@
                 Lucky Ticket:
               </span>
               <span>&nbsp;</span>
-              <span class="text-xl text-green-400">
+              <span class="text-xl">
                 {{ mainContractService.closestTicket || 0 }}
               </span>
             </div>
@@ -165,6 +172,9 @@
           </div>
           <p></p>
         </ng-template>
+      </div>
+      <div class="flex items-center justify-end py-4 mt-4">
+        <app-social-icons></app-social-icons>
       </div>
     </div>
   </div>

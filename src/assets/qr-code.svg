@@ -2,10 +2,10 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 width="1148px" height="1148px" viewBox="0 0 1148 1148" enable-background="new 0 0 1148 1148" xml:space="preserve">
-<rect x="0" y="0" width="1148" height="1148" fill="rgb(25,12,37)" /><g transform="translate(56,56)"><g><defs>
+<rect x="0" y="0" width="1148" height="1148" fill="rgb(11,20,39)" /><g transform="translate(56,56)"><g><defs>
     <linearGradient gradientTransform="rotate(90)" id="grad">
-    <stop offset="5%" stop-color="rgb(160,65,253)" />
-    <stop offset="95%" stop-color="rgb(72,217,126)" />
+    <stop offset="5%" stop-color="rgb(74,222,128)" />
+    <stop offset="95%" stop-color="rgb(2,198,254)" />
     </linearGradient>
 <mask id="gmask"><g>
 <g transform="translate(364,0) scale(0.28,0.28)"><g transform="" style="fill: rgb(255, 255, 255);">
@@ -1180,20 +1180,29 @@ width="1148px" height="1148px" viewBox="0 0 1148 1148" enable-background="new 0 
 <rect width="100" height="100"/>
 </g></g><g transform="translate(1008,1008) scale(0.28,0.28)"><g transform="" style="fill: rgb(255, 255, 255);">
 <rect width="100" height="100"/>
-</g></g><g transform="translate(0,0) scale(1.96, 1.96)"><g transform="" style="fill: rgb(255, 255, 255);">
+</g></g><g transform="translate(0,0) scale(1.96, 1.96)"><g transform=" translate(100, 0) scale(-1,1) " style="fill: rgb(255, 255, 255);">
 <g>
-	<rect x="15" y="15" style="fill:none;" width="70" height="70"/>
-	<path d="M85,0H15H0v15v70v15h15h70h15V85V15V0H85z M85,85H15V15h70V85z"/>
+	<path style="fill:none;" d="M85,66.221V33.75C85,23.411,76.414,15,65.859,15H34.14C23.586,15,15,23.411,15,33.75v51.246
+		l50.855-0.016C76.414,84.98,85,76.564,85,66.221z"/>
+	<path d="M100,66.221V33.75C100,15.141,84.68,0,65.859,0H34.14C15.32,0,0,15.141,0,33.75V100l65.859-0.02
+		C84.68,99.98,100,84.84,100,66.221z M85,66.221c0,10.344-8.586,18.76-19.145,18.76L15,84.996V33.75C15,23.411,23.586,15,34.14,15
+		h31.719C76.414,15,85,23.411,85,33.75V66.221z"/>
 </g>
 </g></g><g transform="translate(840,0) scale(1.96, 1.96)"><g transform="" style="fill: rgb(255, 255, 255);">
 <g>
-	<rect x="15" y="15" style="fill:none;" width="70" height="70"/>
-	<path d="M85,0H15H0v15v70v15h15h70h15V85V15V0H85z M85,85H15V15h70V85z"/>
+	<path style="fill:none;" d="M85,66.221V33.75C85,23.411,76.414,15,65.859,15H34.14C23.586,15,15,23.411,15,33.75v51.246
+		l50.855-0.016C76.414,84.98,85,76.564,85,66.221z"/>
+	<path d="M100,66.221V33.75C100,15.141,84.68,0,65.859,0H34.14C15.32,0,0,15.141,0,33.75V100l65.859-0.02
+		C84.68,99.98,100,84.84,100,66.221z M85,66.221c0,10.344-8.586,18.76-19.145,18.76L15,84.996V33.75C15,23.411,23.586,15,34.14,15
+		h31.719C76.414,15,85,23.411,85,33.75V66.221z"/>
 </g>
-</g></g><g transform="translate(0,840) scale(1.96, 1.96)"><g transform="" style="fill: rgb(255, 255, 255);">
+</g></g><g transform="translate(0,840) scale(1.96, 1.96)"><g transform=" translate(100, 0) scale(-1,1)  translate(0,100) scale(1,-1) " style="fill: rgb(255, 255, 255);">
 <g>
-	<rect x="15" y="15" style="fill:none;" width="70" height="70"/>
-	<path d="M85,0H15H0v15v70v15h15h70h15V85V15V0H85z M85,85H15V15h70V85z"/>
+	<path style="fill:none;" d="M85,66.221V33.75C85,23.411,76.414,15,65.859,15H34.14C23.586,15,15,23.411,15,33.75v51.246
+		l50.855-0.016C76.414,84.98,85,76.564,85,66.221z"/>
+	<path d="M100,66.221V33.75C100,15.141,84.68,0,65.859,0H34.14C15.32,0,0,15.141,0,33.75V100l65.859-0.02
+		C84.68,99.98,100,84.84,100,66.221z M85,66.221c0,10.344-8.586,18.76-19.145,18.76L15,84.996V33.75C15,23.411,23.586,15,34.14,15
+		h31.719C76.414,15,85,23.411,85,33.75V66.221z"/>
 </g>
 </g></g><g transform="translate(56,56) scale(0.84, 0.84)"><g transform="" style="fill: rgb(255, 255, 255);">
 <rect width="100" height="100"/>

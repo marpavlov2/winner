@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "contrast-purple": "#331f46",
-        "light-purple": "#190c25",
-        "dark-purple": "#11031c",
+        "contrast-purple": "#102135",
+        "light-purple": "#0b1427",
+        "dark-purple": "#000a1e",
+        "light-gold": "#FFDB81",
       },
     },
     container: {

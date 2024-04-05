@@ -6,22 +6,17 @@
 
 html,
 body {
-  background-color: #11031c;
-}
-
-.snackbar-layout {
-  color: #fff;
-  background-color: #11031c;
+  background: #000a1e;
 }
 
 .mat-mdc-dialog-container .mdc-dialog__container .mat-mdc-dialog-surface {
-  background-color: #331f46;
+  background-color: #002346;
   color: #fff;
 }
 
 .mat-mdc-snack-bar-container {
   &.custom-snackbar {
-    --mdc-snackbar-container-color: #331f46;
+    --mdc-snackbar-container-color: #002346;
     --mat-mdc-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #fff;
   }
