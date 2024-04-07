@@ -5,7 +5,7 @@ import {
   provideIcons,
   provideNgIconsConfig,
 } from '@ng-icons/core';
-import { heroTrophy } from '@ng-icons/heroicons/outline';
+import { heroTrophy, heroReceiptPercent } from '@ng-icons/heroicons/outline';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
   providers: [
     provideIcons({
       heroTrophy,
+      heroReceiptPercent,
     }),
     provideNgIconsConfig({
       size: '1.3em',

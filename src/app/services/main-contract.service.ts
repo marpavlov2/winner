@@ -21,6 +21,8 @@ export class MainContractService {
   currentRound: Player[] = [];
   lastRound: Player[] = [];
   winner: Player | undefined;
+  lastTicketCurrentRound: number = 0;
+  lastTicketLastRound: number = 0;
 
   isDialogVisible: boolean;
   mainContract: OpenedContract<MainContract>;
@@ -67,6 +69,14 @@ export class MainContractService {
     this.lockedBalance = lockedBalance;
     this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
     this.currentRound = currentRound;
+    if (this.currentRound.length) {
+      this.getPercentagesCurrentRound();
+    }
+
+    if (this.lastRound.length) {
+      this.getPercentagesLastRound();
+    }
+
     this.lastRound = lastRound;
 
     this.findWinner(lastRound);
@@ -115,12 +125,46 @@ export class MainContractService {
     this.currentRound = currentRound;
     this.lastRound = lastRound;
 
+    if (this.currentRound.length) {
+      this.getPercentagesCurrentRound();
+    }
+
+    if (this.lastRound.length) {
+      this.getPercentagesLastRound();
+    }
+
     this.findWinner(lastRound);
   }
 
-  findWinner(players: Player[]) {
+  findWinner(players: Player[]): void {
     this.winner = players.find((player) => player.isWinner === 1);
     this.lastRound = players.filter((player) => player.id !== this.winner!.id);
+  }
+
+  getPercentagesCurrentRound(): void {
+    this.lastTicketCurrentRound = this.currentRound[0].endTicket;
+    this.currentRound = this.currentRound.map((player) => {
+      return {
+        ...player,
+        percentage:
+          ((player.endTicket - player.startTicket + 1) /
+            this.lastTicketCurrentRound) *
+          100,
+      };
+    });
+  }
+
+  getPercentagesLastRound(): void {
+    this.lastTicketLastRound = this.lastRound[0].endTicket;
+    this.lastRound = this.lastRound.map((player) => {
+      return {
+        ...player,
+        percentage:
+          ((player.endTicket - player.startTicket + 1) /
+            this.lastTicketLastRound) *
+          100,
+      };
+    });
   }
 
   async useTonClient(): Promise<TonClient4> {

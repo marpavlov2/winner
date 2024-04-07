@@ -9,6 +9,18 @@ body {
   background: #000a1e;
 }
 
+@media only screen and (max-width: 599px) {
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+  }
+
+  .mat-mdc-dialog-container .mat-mdc-dialog-content {
+    height: calc(100vh - 56px) !important;
+    max-height: 100vh;
+  }
+}
+
 .mat-mdc-dialog-container .mdc-dialog__container .mat-mdc-dialog-surface {
   background-color: #0b1427;
   color: #fff;

@@ -7,6 +7,7 @@ export class Player {
   endTicket: number;
   bet: string;
   isWinner: number;
+  percentage: number;
 
   constructor(query: IPlayer) {
     this.id = query.id.toString();

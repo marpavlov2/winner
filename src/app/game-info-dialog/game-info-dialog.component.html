@@ -1,18 +1,23 @@
-<div class="flex">
-  <h2 mat-dialog-title>Pot of Gold</h2>
-  <ng-icon name="heroXMark"></ng-icon>
+<div class="flex items-center justify-between p-5 sm:pb-0">
+  <h2>Pot of Gold</h2>
+  <ng-icon
+    class="cursor-pointer"
+    size="24"
+    name="heroXMark"
+    (click)="closeButton()"
+  ></ng-icon>
 </div>
 
 <mat-dialog-content>
   <p class="text-white mb-4">
     Pot of gold is a multiplayer mode where all players' bets are pooled
-    together to form a Pot of gold. The winner of the Jackpot takes all. Award
-    can grow to be very large, offering the potential for a big win. The smart
+    together to form a Pot of gold. The winner of the round takes all. Award can
+    grow to be very large, offering the potential for a big win. The smart
     contract ensures that the outcome of the game is random and fair.
   </p>
-  <h2 class="text-white text-lg mb-2">Here's how it works:</h2>
+  <h3 class="text-white text-xl mb-4 font-medium">Here's how it works:</h3>
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 sm:mb-4"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mb-4"
   >
     <div
       class="flex flex-col items-center justify-center mb-2 bg-dark-purple rounded-lg p-4"
@@ -46,6 +51,74 @@
       <p class="text-white text-center">
         The smart contract automatically transfers the award to the winner's
         wallet
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 sm:mb-4"
+  >
+    <div class="flex flex-col mb-2 rounded-lg">
+      <div class="flex mb-4">
+        <ng-icon
+          color="aqua"
+          size="32px"
+          class="mr-2"
+          name="heroTrophy"
+        ></ng-icon>
+        <h3 class="text-xl font-medium">Big rewards</h3>
+      </div>
+      <p class="text-white">
+        The Pot of Gold can grow to be very large, offering the potential for a
+        big win
+      </p>
+    </div>
+
+    <div class="flex flex-col mb-2 rounded-lg">
+      <div class="flex mb-4">
+        <ng-icon
+          color="aqua"
+          size="32px"
+          class="mr-2"
+          name="heroScale"
+        ></ng-icon>
+        <h3 class="text-xl font-medium">Fairness</h3>
+      </div>
+      <p class="text-white">
+        The smart contract ensures that the outcome of the Pot of gold is random
+        and fair
+      </p>
+    </div>
+
+    <div class="flex flex-col mb-2 rounded-lg">
+      <div class="flex mb-4">
+        <ng-icon
+          color="aqua"
+          size="32px"
+          class="mr-2"
+          name="heroShieldCheck"
+        ></ng-icon>
+        <h3 class="text-xl font-medium">Security</h3>
+      </div>
+      <p class="text-white">
+        The smart contract protects your funds and ensures that they are only
+        transferred to the winner
+      </p>
+    </div>
+
+    <div class="flex flex-col mb-2 rounded-lg">
+      <div class="flex mb-4">
+        <ng-icon
+          color="aqua"
+          size="32px"
+          class="mr-2"
+          name="heroPencilSquare"
+        ></ng-icon>
+        <h3 class="text-xl font-medium">Transparency</h3>
+      </div>
+      <p class="text-white">
+        All bets and transactions are recorded on the blockchain, so anyone can
+        verify their authenticity
       </p>
     </div>
   </div>

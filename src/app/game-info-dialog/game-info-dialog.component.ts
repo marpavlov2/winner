@@ -4,12 +4,18 @@ import {
   MatDialogContent,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { NgIconComponent } from '@ng-icons/core';
 import {
-  heroQrCode,
-  heroClipboardDocument,
+  NgIconComponent,
+  provideIcons,
+  provideNgIconsConfig,
+} from '@ng-icons/core';
+import {
   heroUsers,
   heroTrophy,
+  heroRocketLaunch,
+  heroShieldCheck,
+  heroScale,
+  heroPencilSquare,
   heroXMark,
 } from '@ng-icons/heroicons/outline';
 
@@ -17,6 +23,20 @@ import {
   selector: 'app-game-info-dialog',
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent, NgIconComponent],
+  providers: [
+    provideIcons({
+      heroUsers,
+      heroTrophy,
+      heroRocketLaunch,
+      heroShieldCheck,
+      heroScale,
+      heroPencilSquare,
+      heroXMark,
+    }),
+    provideNgIconsConfig({
+      size: '1.5em',
+    }),
+  ],
   templateUrl: './game-info-dialog.component.html',
   styleUrl: './game-info-dialog.component.scss',
 })
@@ -25,4 +45,8 @@ export class GameInfoDialogComponent {
   fee: number;
 
   constructor(public dialogRef: MatDialogRef<GameInfoDialogComponent>) {}
+
+  closeButton(): void {
+    this.dialogRef.close();
+  }
 }

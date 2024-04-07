@@ -43,7 +43,7 @@ export class HeaderComponent {
 
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(GameInfoDialogComponent, {
-      width: '868px',
+      width: '1068px',
     });
 
     dialogRef.componentInstance.fee = this.mainContractService.feePercent;
