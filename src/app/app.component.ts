@@ -28,6 +28,10 @@ import {
 import { TonConnectService } from './ton-connect.service';
 import { Address, toNano } from '@ton/core';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -43,6 +47,7 @@ import { Address, toNano } from '@ton/core';
     SocialIconsComponent,
     RewardComponent,
     PlayersInRoundComponent,
+    FormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -60,6 +65,8 @@ import { Address, toNano } from '@ton/core';
   ],
 })
 export class AppComponent {
+  betAmount = 1;
+
   constructor(
     public mainContractService: MainContractService,
     private _tonConnectService: TonConnectService,
@@ -75,7 +82,7 @@ export class AppComponent {
   placeBet(): void {
     if (this._tonConnectService.tonConnectUI.connected) {
       this._tonConnectService.sendTransaction({
-        value: toNano(1),
+        value: toNano(this.betAmount),
         to: Address.parse(this.mainContractService.contractAddress),
       });
     } else {

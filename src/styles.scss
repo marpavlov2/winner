@@ -8,6 +8,9 @@ html,
 body {
   background: #000a1e;
 }
+*:focus {
+  outline: none;
+}
 
 @media only screen and (max-width: 599px) {
   .cdk-overlay-pane.mat-mdc-dialog-panel {

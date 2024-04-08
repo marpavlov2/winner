@@ -31,26 +31,45 @@
               How it Works?
             </p>
 
-            <div class="flex justify-center sm:justify-start">
-              <span
-                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
-              >
-                Min Bet:
-                <span>&nbsp;</span>
-                <span class="text-gray-300">
-                  {{ mainContractService.betMin || 0 }} TON
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center sm:justify-start"
+            >
+              <div class="flex mb-4 sm:mb-0">
+                <span
+                  class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+                >
+                  Min Bet:
+                  <span>&nbsp;</span>
+                  <span class="text-gray-300">
+                    {{ mainContractService.betMin || 0 }} TON
+                  </span>
                 </span>
-              </span>
 
-              <span
-                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm sm:mr-4"
-              >
-                Max Bet:
-                <span>&nbsp;</span>
-                <span class="text-gray-300">
-                  {{ mainContractService.betMax || 0 }} TON
+                <span
+                  class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+                >
+                  Max Bet:
+                  <span>&nbsp;</span>
+                  <span class="text-gray-300">
+                    {{ mainContractService.betMax || 0 }} TON
+                  </span>
                 </span>
-              </span>
+              </div>
+              <div
+                class="flex items-center bg-dark-purple rounded-lg p-2 text-sm mr-4"
+              >
+                <div class="flex items-center justify-center">
+                  <span>Bet:</span>
+                  <input
+                    class="max-w-8 bg-dark-purple text-center"
+                    matInput
+                    #postalCode
+                    maxlength="3"
+                    [(ngModel)]="betAmount"
+                  />
+                </div>
+                <span class="text-gray-300">TON</span>
+              </div>
 
               <button
                 (click)="placeBet()"
@@ -71,6 +90,7 @@
             />
           </div>
         </div>
+
         <button
           (click)="placeBet()"
           class="bg-green-400 transition ease-in-out hover:scale-105 text-dark-purple text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto flex items-center justify-center sm:hidden mt-4"
