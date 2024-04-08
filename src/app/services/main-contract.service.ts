@@ -146,10 +146,13 @@ export class MainContractService {
     this.currentRound = this.currentRound.map((player) => {
       return {
         ...player,
-        percentage:
-          ((player.endTicket - player.startTicket + 1) /
-            this.lastTicketCurrentRound) *
-          100,
+        percentage: parseFloat(
+          (
+            ((player.endTicket - player.startTicket + 1) /
+              this.lastTicketCurrentRound) *
+            100
+          ).toFixed(2)
+        ),
       };
     });
   }
