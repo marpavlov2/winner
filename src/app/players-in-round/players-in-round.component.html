@@ -11,7 +11,7 @@
     <div
       *ngFor="let num of [].constructor(playersMax); let i = index"
       [ngClass]="{
-        'bg-green-400': i < playersCurrent,
+        'bg-primary-blue': i < playersCurrent,
         'bg-contrast-purple': i >= playersCurrent
       }"
       class="w-full h-2.5 flex flex-col justify-center overflow-hidden text-xs text-center whitespace-nowrap"
