@@ -1,13 +1,41 @@
-.ton-icon {
-  position: absolute;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -45px);
-  svg {
-    fill: aqua;
-    color: aqua;
+.reward-container {
+  position: relative;
+  background: url("../../assets/blur.png");
+  background-size: cover;
+
+  .reward {
+    z-index: 2;
+
+    h2 {
+      background: -webkit-linear-gradient(45deg, aqua, #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ton-symbol {
+      background-image: url("../../assets/ton_symbol.svg");
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
   }
-  fill: aqua;
-  color: aqua;
+  .chips {
+    background-image: url("../../assets/casino-chips.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 320px;
+    width: 320px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgb(11, 20, 39, 0.4), rgb(0, 10, 30, 1));
+    z-index: 1;
+  }
 }

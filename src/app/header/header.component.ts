@@ -10,11 +10,17 @@ import { GameInfoDialogComponent } from '../game-info-dialog/game-info-dialog.co
 import { MainContractService } from '../services/main-contract.service';
 import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 import { TonConnectService } from '../ton-connect.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIconComponent, GameInfoDialogComponent, LottieComponent],
+  imports: [
+    NgIconComponent,
+    RouterModule,
+    GameInfoDialogComponent,
+    LottieComponent,
+  ],
   providers: [
     provideIcons({
       heroTrophy,

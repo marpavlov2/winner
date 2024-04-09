@@ -1,19 +1,37 @@
-<header class="backdrop-blur bg-dark-purple/95">
+<header class="backdrop-blur bg-light-purple/95">
   <div class="container mx-auto py-3">
     <div class="flex justify-between items-center text-white">
       <div class="flex items-center cursor-pointer">
-        <h2 class="text-xl font-medium mx-2">
+        <h2 class="text-xl font-medium mx-2" routerLink="/">
           earnplaying<span class="text-green-400">.</span>
         </h2>
       </div>
 
       <div class="flex items-center">
-        <p
+        <a
+          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
+          routerLink="/"
+        >
+          Home
+        </a>
+        <a
+          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
+          routerLink="/"
+        >
+          Roadmap
+        </a>
+        <a
+          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
+          routerLink="/games"
+        >
+          Games
+        </a>
+        <a
           class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
           (click)="openInfoDialog()"
         >
-          How it Works?
-        </p>
+          How it works
+        </a>
         <button class="justify-end" id="ton-wallet-button"></button>
       </div>
     </div>

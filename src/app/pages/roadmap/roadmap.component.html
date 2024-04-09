@@ -1,0 +1,64 @@
+<div class="text-white py-20 roadmap-container">
+  <h1 class="text-4xl tracking-widest text-center mb-12 font-semibold">
+    Roadmap
+  </h1>
+  <div class="main-wrapper">
+    <div class="container mx-auto text-white pb-4">
+      <div class="roadmap_curlyDiagram">
+        <img
+          class="mb-8"
+          src="https://thefuturebet.com/assets/curlyDiagram2-fcd710fb.png"
+          alt="curlyDiagram"
+        />
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mb-4"
+      >
+        <div
+          class="flex flex-col mb-2 bg-light-purple rounded-lg p-4"
+          *ngFor="let item of items"
+        >
+          <h2 class="text-xl text-gray-300">{{ item.phase }}</h2>
+          <span class="text-2xl mb-4 font-light text-green-400">
+            {{ item.year }}
+          </span>
+          <ul class="pl-6">
+            <div class="flex relative">
+              <span>
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFSSURBVHgBbZHBSoJREIXPzP3/yiIrLOgVIigQUlu1CyV0Ww/Qrk1gm15AiKRVu+ghdFWULly6bGPgCwht7IdU9N6ZboZG5VldmO8O55wB/igVXSb2ovMSZogmj53O9dJcf5hn43IU6+3ryDSEXW0IW33ZLH98MTwBY5EtGdEtInlSoGkIj8zYjYVc2ulcLE3huXfkibgvzHWniCAGI9CbEB4A7S7EtDCGU61Swjg98vO2UbdilFYgHAaEOMEsi2rbf8imorNEQDxfBGyG1e9hkLcQwvI2jDv2lgDDCtG00nxxHDD9Wr4nDCseiNyiLAdOTzS0dwgsNJR1hc02V29Ox56V8SyGki4wqo7JiVFrv1sSSNJvrk8Drsa16gOusUiWBRvsA/hJXBgHcGZxMDSVXz0f+vq6fVsgtjk4zuhCr4HQ1Qbup+d/SrVuE+nW1cwLfgLJkZRT49rjXwAAAABJRU5ErkJggg=="
+                  alt="listdot"
+                  draggable="false"
+                  class="listdot"
+              /></span>
+              <li class="mb-2">
+                {{ item.firstText }}
+              </li>
+            </div>
+            <div class="flex relative">
+              <span>
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFSSURBVHgBbZHBSoJREIXPzP3/yiIrLOgVIigQUlu1CyV0Ww/Qrk1gm15AiKRVu+ghdFWULly6bGPgCwht7IdU9N6ZboZG5VldmO8O55wB/igVXSb2ovMSZogmj53O9dJcf5hn43IU6+3ryDSEXW0IW33ZLH98MTwBY5EtGdEtInlSoGkIj8zYjYVc2ulcLE3huXfkibgvzHWniCAGI9CbEB4A7S7EtDCGU61Swjg98vO2UbdilFYgHAaEOMEsi2rbf8imorNEQDxfBGyG1e9hkLcQwvI2jDv2lgDDCtG00nxxHDD9Wr4nDCseiNyiLAdOTzS0dwgsNJR1hc02V29Ox56V8SyGki4wqo7JiVFrv1sSSNJvrk8Drsa16gOusUiWBRvsA/hJXBgHcGZxMDSVXz0f+vq6fVsgtjk4zuhCr4HQ1Qbup+d/SrVuE+nW1cwLfgLJkZRT49rjXwAAAABJRU5ErkJggg=="
+                  alt="listdot"
+                  draggable="false"
+                  class="listdot"
+              /></span>
+              <li class="mb-2">{{ item.secondText }}</li>
+            </div>
+
+            <div class="flex relative">
+              <span>
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFSSURBVHgBbZHBSoJREIXPzP3/yiIrLOgVIigQUlu1CyV0Ww/Qrk1gm15AiKRVu+ghdFWULly6bGPgCwht7IdU9N6ZboZG5VldmO8O55wB/igVXSb2ovMSZogmj53O9dJcf5hn43IU6+3ryDSEXW0IW33ZLH98MTwBY5EtGdEtInlSoGkIj8zYjYVc2ulcLE3huXfkibgvzHWniCAGI9CbEB4A7S7EtDCGU61Swjg98vO2UbdilFYgHAaEOMEsi2rbf8imorNEQDxfBGyG1e9hkLcQwvI2jDv2lgDDCtG00nxxHDD9Wr4nDCseiNyiLAdOTzS0dwgsNJR1hc02V29Ox56V8SyGki4wqo7JiVFrv1sSSNJvrk8Drsa16gOusUiWBRvsA/hJXBgHcGZxMDSVXz0f+vq6fVsgtjk4zuhCr4HQ1Qbup+d/SrVuE+nW1cwLfgLJkZRT49rjXwAAAABJRU5ErkJggg=="
+                  alt="listdot"
+                  draggable="false"
+                  class="listdot"
+              /></span>
+              <li>{{ item.thirdText }}</li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

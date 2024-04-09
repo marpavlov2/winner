@@ -1,0 +1,37 @@
+<div class="flex">
+  <div class="hidden sm:flex mr-4">
+    <div
+      class="box rounded-lg py-2 px-4 mr-2 cursor-pointer"
+      (click)="decreaseBet()"
+    >
+      &#8722;
+    </div>
+    <div class="flex items-center box rounded-lg px-4 py-1 text-sm">
+      <div class="flex items-center justify-center">
+        <span class="mr-2">Your Bet:</span>
+        <input
+          class="max-w-12 mr-2 bg-dark-purple rounded-lg text-center p-2"
+          matInput
+          #postalCode
+          maxlength="3"
+          [(ngModel)]="betAmount"
+        />
+      </div>
+      <span class="text-gray-300">TON</span>
+    </div>
+    <div
+      class="box rounded-lg py-2 px-4 ml-2 cursor-pointer"
+      (click)="increaseBet()"
+    >
+      +
+    </div>
+  </div>
+
+  <button
+    (click)="placeBet()"
+    class="bg-green-400 pulse-btn hidden sm:flex items-center transition ease-in-out hover:scale-105 text-dark-purple text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto"
+  >
+    <ng-icon class="mr-2" name="heroRocketLaunch"></ng-icon>
+    Place Bet
+  </button>
+</div>

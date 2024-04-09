@@ -1,0 +1,190 @@
+<app-reward [lockedBalance]="mainContractService.lockedBalance"></app-reward>
+
+<div class="main-wrapper -mt-8 sm:-mt-10 z-10 relative">
+  <div class="container mx-auto text-white pb-4">
+    <div class="p-4 mb-4 bg-light-purple rounded-lg">
+      <div class="flex flex-col sm:flex-row justify-start">
+        <div class="flex justify-center sm:mr-4">
+          <img
+            src="../../assets/qr-code.svg"
+            alt="ton-qr-code"
+            height="168"
+            width="168"
+          />
+        </div>
+
+        <div class="flex flex-col justify-between mr-2">
+          <div class="flex flex-col text-center sm:text-left mb-4 sm:mb-0">
+            <h2 class="mb-2 sm:text-lg">Deposit Address:</h2>
+            <div class="md:flex items-center overflow-hidden">
+              <div class="flex items-center bg-dark-purple rounded-lg p-2">
+                <span class="truncate mr-2">
+                  {{ mainContractService.contractAddress }}
+                </span>
+
+                <ng-icon
+                  class="min-w-7 cursor-pointer"
+                  name="heroClipboardDocument"
+                  (click)="copyMessage()"
+                ></ng-icon>
+              </div>
+            </div>
+          </div>
+          <p
+            class="cursor-pointer text-center text-green-400 hover:text-slate-200 sm:hidden mb-2"
+            (click)="openInfoDialog()"
+          >
+            How it Works?
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center sm:justify-start"
+          >
+            <div class="flex mb-4 sm:mb-0">
+              <span
+                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+              >
+                Min Bet:
+                <span>&nbsp;</span>
+                <span class="text-gray-300">
+                  {{ mainContractService.betMin || 0 }} TON
+                </span>
+              </span>
+
+              <span
+                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+              >
+                Max Bet:
+                <span>&nbsp;</span>
+                <span class="text-gray-300">
+                  {{ mainContractService.betMax || 0 }} TON
+                </span>
+              </span>
+            </div>
+            <div
+              class="flex items-center bg-dark-purple rounded-lg p-2 text-sm mr-4 sm:hidden"
+            >
+              <div class="flex items-center justify-center">
+                <span>Bet:</span>
+                <input
+                  class="max-w-8 bg-dark-purple text-center"
+                  matInput
+                  #postalCode
+                  maxlength="3"
+                  [(ngModel)]="betAmount"
+                />
+              </div>
+              <span class="text-gray-300">TON</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        (click)="placeBet()"
+        class="bg-green-400 transition ease-in-out hover:scale-105 text-dark-purple text-base font-medium py-2 px-4 rounded-full w-full sm:w-auto flex items-center justify-center sm:hidden mt-4"
+      >
+        <ng-icon class="mr-2" name="heroRocketLaunch"></ng-icon>
+        Place Bet
+      </button>
+    </div>
+
+    <app-players-in-round
+      [playersCurrent]="mainContractService.playersCurrent"
+      [playersMax]="mainContractService.playersMax"
+    ></app-players-in-round>
+
+    <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6 mb-4">
+      <h2 class="mb-6 sm:text-lg">Current Round:</h2>
+
+      <div
+        *ngIf="
+          mainContractService.currentRound.length;
+          else noPlayersCurrentRound
+        "
+      >
+        <div
+          *ngFor="
+            let player of mainContractService.currentRound;
+            let i = index;
+            trackBy: identify
+          "
+        >
+          <app-player
+            [player]="player"
+            [index]="i"
+            [totalPlayers]="mainContractService.currentRound.length"
+            data-aos="fade-up"
+            data-aos-offset="100"
+          ></app-player>
+        </div>
+      </div>
+
+      <ng-template #noPlayersCurrentRound>
+        <div class="flex flex-col items-center justify-center p-4">
+          <ng-icon size="32px" class="mb-2" name="heroUsers"></ng-icon>
+          <p class="font-lg">No player bets in this round</p>
+        </div>
+        <p></p>
+      </ng-template>
+    </div>
+
+    <div class="sm:bg-light-purple rounded-lg pb-2 sm:p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="sm:text-lg">Last Round:</h2>
+
+        <div class="flex justify-center">
+          <div
+            class="flex items-center justify-center bg-light-purple sm:bg-dark-purple py-2 px-4 rounded-lg"
+          >
+            <span class="text-xs tracking-wider uppercase font-medium">
+              Lucky Ticket:
+            </span>
+            <span>&nbsp;</span>
+            <span>
+              {{ mainContractService.closestTicket || 0 }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <app-player
+        *ngIf="mainContractService.winner"
+        [player]="mainContractService.winner"
+        [index]="0"
+        [totalPlayers]="mainContractService.playersMax + 1"
+        data-aos="fade-up"
+        data-aos-offset="100"
+      ></app-player>
+
+      <div
+        *ngIf="mainContractService.lastRound.length; else noPlayersLastRound"
+      >
+        <div
+          *ngFor="
+            let player of mainContractService.lastRound;
+            let i = index;
+            trackBy: identify
+          "
+        >
+          <app-player
+            [player]="player"
+            [index]="i"
+            [totalPlayers]="mainContractService.lastRound.length"
+            data-aos="fade-up"
+          ></app-player>
+        </div>
+      </div>
+
+      <ng-template #noPlayersLastRound>
+        <div class="flex flex-col items-center justify-center p-4">
+          <ng-icon size="32px" class="mb-2" name="heroUsers"></ng-icon>
+          <p class="font-lg">No player bets in last round</p>
+        </div>
+        <p></p>
+      </ng-template>
+    </div>
+    <div class="flex items-center justify-end py-8 mt-4">
+      <app-social-icons></app-social-icons>
+    </div>
+  </div>
+</div>
