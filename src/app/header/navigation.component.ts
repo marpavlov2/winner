@@ -13,7 +13,7 @@ import { TonConnectService } from '../ton-connect.service';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-navigation',
   standalone: true,
   imports: [
     NgIconComponent,
@@ -29,10 +29,10 @@ import { RouterModule } from '@angular/router';
       size: '1.5em',
     }),
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  templateUrl: './navigation.component.html',
+  styleUrl: './navigation.component.scss',
 })
-export class HeaderComponent {
+export class NavigationComponent {
   options: AnimationOptions = {
     path: '/assets/earnplaying.json',
   };

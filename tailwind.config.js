@@ -9,6 +9,7 @@ module.exports = {
         "dark-purple": "#000a1e",
         "light-gold": "#FFDB81",
         "light-blue": "#00EBEB",
+        "primary-blue": "#00ddb3",
       },
     },
     container: {

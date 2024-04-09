@@ -1,1 +1,32 @@
-<app-roadmap></app-roadmap> <app-games></app-games>
+<div class="main-wrapper pt-40 py-24 text-white">
+  <div class="container mx-auto">
+    <div class="flex justify-between">
+      <div class="flex flex-col justify-center max-w-lg">
+        <h1 class="text-5xl leading-snug font-bold tracking-widest mb-4">
+          The First GambleFi Ecosystem on the TON Chain
+        </h1>
+        <p class="mb-4 leading-relaxed text-gray-300">
+          Introducing EarnPlaying.org, the pioneering GambleFi Ecosystem on the
+          Ton chain, where thrilling games are just a Telegram bot away! Ready
+          to test your luck? Join us now at EarnPlaying.org and experience the
+          excitement firsthand.
+        </p>
+        <div>
+          <button
+            class="bg-primary-blue flex text-dark-purple text-base font-medium py-2 px-4 rounded-full mt-4"
+          >
+            Token Sale Soon
+          </button>
+        </div>
+      </div>
+      <ng-lottie
+        class="hidden sm:block"
+        [options]="options"
+        (animationCreated)="animationCreated($event)"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- <app-roadmap></app-roadmap> <app-games></app-games>
+ -->

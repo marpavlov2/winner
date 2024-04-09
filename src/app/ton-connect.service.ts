@@ -26,7 +26,7 @@ export class TonConnectService {
         colorsSet: {
           [THEME.DARK]: {
             connectButton: {
-              background: '#4ade80',
+              background: '#00ddb3',
               foreground: '#000a1e',
             },
           },

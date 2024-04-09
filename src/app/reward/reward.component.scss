@@ -7,7 +7,7 @@
     z-index: 2;
 
     h2 {
-      background: -webkit-linear-gradient(45deg, aqua, #4ade80);
+      background: -webkit-linear-gradient(45deg, aqua, #00ddb3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -19,6 +19,7 @@
       background-repeat: no-repeat;
     }
   }
+
   .chips {
     background-image: url("../../assets/casino-chips.png");
     background-size: contain;
@@ -30,6 +31,7 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+
     @keyframes floating {
       0% {
         transform: translate(0, 0px);
