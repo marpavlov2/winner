@@ -1,3 +1,7 @@
+.header-container {
+  min-height: calc(100vh - 64px);
+}
+
 .main-wrapper {
   background: url("../../../assets/blur.png");
   background-size: cover;

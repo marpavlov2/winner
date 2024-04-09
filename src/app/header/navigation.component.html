@@ -13,9 +13,41 @@
         </h2>
       </div>
 
-      <div class="flex items-center">
+      <div
+        id="nav-icon3"
+        class="flex justify-center items-center sm:hidden"
+        [class.open]="isMenuOpen"
+        (click)="openMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div id="myNav" class="overlay" [class.w-full]="isMenuOpen">
+        <div class="overlay-content">
+          <a
+            routerLink="/"
+            [routerLinkActive]="'is-active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="openMenu()"
+          >
+            Home
+          </a>
+          <a
+            routerLink="/games"
+            [routerLinkActive]="'is-active'"
+            (click)="openMenu()"
+          >
+            Games
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden sm:flex items-center">
         <a
-          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
+          class="mr-6 cursor-pointer text-white hover:text-slate-200"
           routerLink="/"
         >
           Home
@@ -38,6 +70,7 @@
         >
           How it works
         </a>
+
         <button class="justify-end" id="ton-wallet-button"></button>
       </div>
     </div>

@@ -37,6 +37,8 @@ export class NavigationComponent {
     path: '/assets/earnplaying.json',
   };
 
+  isMenuOpen = false;
+
   constructor(
     public dialog: MatDialog,
     private _tonConnectService: TonConnectService,
@@ -45,6 +47,10 @@ export class NavigationComponent {
 
   async ngAfterViewInit() {
     this._tonConnectService.initializeTonConnectUI();
+  }
+
+  openMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   openInfoDialog(): void {
