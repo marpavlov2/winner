@@ -33,4 +33,6 @@ export class PlayerComponent {
 
   @Input()
   index: number;
+
+  constructor() {}
 }

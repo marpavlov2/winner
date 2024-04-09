@@ -161,13 +161,13 @@
       >
         <div
           *ngFor="
-            let player of mainContractService.lastRound;
+            let player2 of mainContractService.lastRound;
             let i = index;
             trackBy: identify
           "
         >
           <app-player
-            [player]="player"
+            [player]="player2"
             [index]="i"
             [totalPlayers]="mainContractService.lastRound.length"
             data-aos="fade-up"

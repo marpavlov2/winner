@@ -69,17 +69,16 @@ export class MainContractService {
     this.lockedBalance = lockedBalance;
     this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
     this.currentRound = currentRound;
+    this.lastRound = lastRound;
+
     if (this.currentRound.length) {
       this.getPercentagesCurrentRound();
     }
 
     if (this.lastRound.length) {
+      this.findWinner(lastRound);
       this.getPercentagesLastRound();
     }
-
-    this.lastRound = lastRound;
-
-    this.findWinner(lastRound);
 
     /* mainContract.sendWithdrawalRequest(
       this._tonService.sender,
@@ -130,10 +129,9 @@ export class MainContractService {
     }
 
     if (this.lastRound.length) {
+      this.findWinner(lastRound);
       this.getPercentagesLastRound();
     }
-
-    this.findWinner(lastRound);
   }
 
   findWinner(players: Player[]): void {
@@ -162,10 +160,13 @@ export class MainContractService {
     this.lastRound = this.lastRound.map((player) => {
       return {
         ...player,
-        percentage:
-          ((player.endTicket - player.startTicket + 1) /
-            this.lastTicketLastRound) *
-          100,
+        percentage: parseFloat(
+          (
+            ((player.endTicket - player.startTicket + 1) /
+              this.lastTicketLastRound) *
+            100
+          ).toFixed(2)
+        ),
       };
     });
   }
