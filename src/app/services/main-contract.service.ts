@@ -76,8 +76,9 @@ export class MainContractService {
     }
 
     if (this.lastRound.length) {
-      this.findWinner(lastRound);
       this.getPercentagesLastRound();
+
+      this.findWinner(this.lastRound);
     }
 
     /* mainContract.sendWithdrawalRequest(
@@ -129,8 +130,9 @@ export class MainContractService {
     }
 
     if (this.lastRound.length) {
-      this.findWinner(lastRound);
       this.getPercentagesLastRound();
+
+      this.findWinner(this.lastRound);
     }
   }
 
@@ -156,7 +158,7 @@ export class MainContractService {
   }
 
   getPercentagesLastRound(): void {
-    this.lastTicketLastRound = this.lastRound[0].endTicket;
+    this.lastTicketLastRound = this.lastRound[1].endTicket;
     this.lastRound = this.lastRound.map((player) => {
       return {
         ...player,
