@@ -17,7 +17,7 @@
           <div class="flex flex-col text-center sm:text-left mb-4 sm:mb-0">
             <h2 class="mb-2 sm:text-lg">Deposit Address:</h2>
             <div class="md:flex items-center overflow-hidden">
-              <div class="flex items-center bg-dark-purple rounded-lg p-2">
+              <div class="flex items-center bg-dark-purple rounded-lg p-2 px-4">
                 <span class="truncate mr-2">
                   {{ mainContractService.contractAddress }}
                 </span>
@@ -42,7 +42,7 @@
           >
             <div class="flex mb-4 sm:mb-0">
               <span
-                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+                class="bg-dark-purple flex items-center rounded-lg p-2 px-4 text-sm mr-2"
               >
                 Min Bet:
                 <span>&nbsp;</span>
@@ -52,7 +52,7 @@
               </span>
 
               <span
-                class="bg-dark-purple flex items-center rounded-lg p-2 text-sm mr-2"
+                class="bg-dark-purple flex items-center rounded-lg p-2 px-4 text-sm mr-2"
               >
                 Max Bet:
                 <span>&nbsp;</span>
@@ -121,11 +121,9 @@
 
         <div class="flex justify-center">
           <div
-            class="flex items-center justify-center bg-light-purple sm:bg-dark-purple py-2 px-4 rounded-lg"
+            class="flex items-center justify-center bg-light-blue text-dark-purple font-bold py-2 px-4 tracking-wider rounded-lg"
           >
-            <span class="text-xs tracking-wider uppercase font-medium">
-              Lucky Ticket:
-            </span>
+            <span class="text-xs uppercase"> Lucky Ticket: </span>
             <span>&nbsp;</span>
             <span>
               {{ mainContractService.closestTicket || 0 }}
