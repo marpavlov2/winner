@@ -1,7 +1,7 @@
 <div class="text-white reward-container pt-8 mb-12 sm:mb-20">
   <div class="main-wrapper z-10 relative">
     <div class="container mx-auto">
-      <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center justify-center sm:justify-between mb-4">
         <div class="reward flex flex-col">
           <h2
             class="tracking-wide sm:tracking-widest text-4xl sm:text-6xl font-bold mb-2 text-green-400"
@@ -9,7 +9,9 @@
             ROUND REWARD
           </h2>
 
-          <div class="flex flex-row items-center pr-4 sm:mb-8">
+          <div
+            class="flex flex-row items-center justify-center sm:justify-start pr-4 sm:mb-8"
+          >
             <div
               class="ton-symbol w-12 h-12 sm:w-16 sm:h-16 -ml-2 sm:-ml-4"
             ></div>
@@ -22,7 +24,7 @@
             </span>
           </div>
 
-          <app-set-bet></app-set-bet>
+          <app-set-bet class="hidden sm:block"></app-set-bet>
         </div>
         <div class="chips hidden md:block"></div>
       </div>

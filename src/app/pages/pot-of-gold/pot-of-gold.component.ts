@@ -25,6 +25,7 @@ import { SocialIconsComponent } from '../../social-icons/social-icons.component'
 import { RewardComponent } from '../../reward/reward.component';
 import { PlayerComponent } from '../../player/player.component';
 import { FormsModule } from '@angular/forms';
+import { SetBetComponent } from '../../set-bet/set-bet.component';
 
 @Component({
   selector: 'app-pot-of-gold',
@@ -40,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     RewardComponent,
     PlayersInRoundComponent,
     FormsModule,
+    SetBetComponent,
   ],
   providers: [
     provideIcons({

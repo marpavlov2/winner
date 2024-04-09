@@ -61,21 +61,8 @@
                 </span>
               </span>
             </div>
-            <div
-              class="flex items-center bg-dark-purple rounded-lg p-2 text-sm mr-4 sm:hidden"
-            >
-              <div class="flex items-center justify-center">
-                <span>Bet:</span>
-                <input
-                  class="max-w-8 bg-dark-purple text-center"
-                  matInput
-                  #postalCode
-                  maxlength="3"
-                  [(ngModel)]="betAmount"
-                />
-              </div>
-              <span class="text-gray-300">TON</span>
-            </div>
+
+            <app-set-bet class="sm:hidden"></app-set-bet>
           </div>
         </div>
       </div>
