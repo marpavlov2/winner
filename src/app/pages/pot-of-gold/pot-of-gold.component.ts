@@ -69,7 +69,7 @@ export class PotOfGoldComponent {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    AOS.init();
+    AOS.init({ once: true });
     this.mainContractService.useMainContract();
   }
 
