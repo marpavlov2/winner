@@ -21,7 +21,6 @@ import AOS from 'aos';
 import { Address, toNano } from '@ton/core';
 import { GameInfoDialogComponent } from '../../game-info-dialog/game-info-dialog.component';
 import { PlayersInRoundComponent } from '../../players-in-round/players-in-round.component';
-import { SocialIconsComponent } from '../../social-icons/social-icons.component';
 import { RewardComponent } from '../../reward/reward.component';
 import { PlayerComponent } from '../../player/player.component';
 import { FormsModule } from '@angular/forms';
@@ -37,7 +36,6 @@ import { SetBetComponent } from '../../set-bet/set-bet.component';
     PlayerComponent,
     MatSnackBarModule,
     GameInfoDialogComponent,
-    SocialIconsComponent,
     RewardComponent,
     PlayersInRoundComponent,
     FormsModule,

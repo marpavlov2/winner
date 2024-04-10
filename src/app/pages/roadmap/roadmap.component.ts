@@ -28,16 +28,15 @@ export class RoadmapComponent {
       phase: 'Phase-3',
       year: 'Q4 2024',
       firstText: 'Create New Game',
-      secondText: 'Commodi dignissimos odit consequatur placeat!',
-      thirdText: 'Explicabo eaque qui nostrum iste!',
+      secondText: 'Comming Soon',
+      thirdText: 'Comming Soon',
     },
     {
       phase: 'Phase-4',
       year: 'Q1 2025',
-      firstText: 'Labore et dolore magna aliqua.',
-      secondText: 'Ut enim ad minim veniam.',
-      thirdText:
-        'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      firstText: 'In this time period, our Intelligent and talent founders',
+      secondText: 'Comming Soon',
+      thirdText: 'Comming Soon',
     },
   ];
 }

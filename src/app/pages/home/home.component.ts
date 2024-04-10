@@ -3,11 +3,12 @@ import { RoadmapComponent } from '../roadmap/roadmap.component';
 import { GamesComponent } from '../games/games.component';
 import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { FooterComponent } from '../../footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RoadmapComponent, GamesComponent, LottieComponent],
+  imports: [RoadmapComponent, GamesComponent, LottieComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
