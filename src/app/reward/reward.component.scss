@@ -7,7 +7,7 @@
     z-index: 2;
 
     h2 {
-      background: -webkit-linear-gradient(45deg, aqua, #00ddb3);
+      background: -webkit-linear-gradient(45deg, #00ffa6, #00ddb3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -20,29 +20,15 @@
     }
   }
 
-  .chips {
-    background-image: url("../../assets/casino-chips.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 320px;
-    width: 320px;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-
-    @keyframes floating {
-      0% {
-        transform: translate(0, 0px);
-      }
-      50% {
-        transform: translate(0, 8px);
-      }
-      100% {
-        transform: translate(0, -0px);
-      }
-    }
+  .lucky-ticket-number {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 40px;
+    color: #000a1e;
   }
 
   &::after {

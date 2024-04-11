@@ -26,7 +26,14 @@
 
           <app-set-bet class="hidden sm:block"></app-set-bet>
         </div>
-        <div class="chips hidden md:block"></div>
+        <div class="relative">
+          <span class="lucky-ticket-number">{{ luckyTicket || 0 }}</span>
+          <ng-lottie
+            class="hidden sm:block"
+            [options]="options"
+            (animationCreated)="animationCreated($event)"
+          />
+        </div>
       </div>
     </div>
   </div>

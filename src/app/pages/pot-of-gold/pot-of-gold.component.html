@@ -1,4 +1,7 @@
-<app-reward [lockedBalance]="mainContractService.lockedBalance"></app-reward>
+<app-reward
+  [lockedBalance]="mainContractService.lockedBalance"
+  [luckyTicket]="mainContractService.closestTicket"
+></app-reward>
 
 <div class="main-wrapper -mt-8 sm:-mt-10 z-10 relative">
   <div class="container mx-auto text-white pb-4">
@@ -121,7 +124,7 @@
 
         <div class="flex justify-center">
           <div
-            class="flex items-center justify-center bg-light-blue text-dark-purple font-bold py-2 px-4 tracking-wider rounded-lg"
+            class="flex items-center justify-center bg-primary-blue text-dark-purple font-bold py-2 px-4 tracking-wider rounded-lg"
           >
             <span class="text-xs uppercase"> Lucky Ticket: </span>
             <span>&nbsp;</span>
