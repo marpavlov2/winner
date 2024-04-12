@@ -39,47 +39,13 @@ export class MainContractService {
     );
 
     this.mainContract = client.open(contract) as OpenedContract<MainContract>;
-    const [
-      feePercent,
-      betMin,
-      betMax,
-      playersMax,
-      playersCurrent,
-      lockedBalance,
-      closestTicket,
-      currentRound,
-      lastRound,
-    ] = await Promise.all([
-      this.mainContract.getFeePercent(),
-      this.mainContract.getBetMin(),
-      this.mainContract.getBetMax(),
-      this.mainContract.getPlayersMax(),
-      this.mainContract.getPlayersCurrent(),
-      this.mainContract.getLockedBalance(),
-      this.mainContract.getLuckyTicket(),
-      this.mainContract.getCurrentRound(),
-      this.mainContract.getLastRound(),
-    ]);
+    this.refreshData();
 
-    this.feePercent = feePercent;
-    this.betMin = betMin;
-    this.betMax = betMax;
-    this.playersMax = playersMax;
-    this.playersCurrent = playersCurrent;
-    this.lockedBalance = lockedBalance;
-    this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
-    this.currentRound = currentRound;
-    this.lastRound = lastRound;
-
-    if (this.currentRound.length) {
-      this.getPercentagesCurrentRound();
-    }
-
-    if (this.lastRound.length) {
-      this.getPercentagesLastRound();
-
-      this.findWinner(this.lastRound);
-    }
+    setTimeout(() => {
+      setInterval(() => {
+        this.refreshData();
+      }, 5000);
+    }, 3000);
 
     /* mainContract.sendWithdrawalRequest(
       this._tonService.sender,
@@ -98,41 +64,53 @@ export class MainContractService {
       toNano('0.05'),
       10
     ); */
-
-    setInterval(() => {
-      this.refreshData();
-    }, 3000);
   }
 
   async refreshData() {
-    const [
-      playersCurrent,
-      lockedBalance,
-      closestTicket,
-      currentRound,
-      lastRound,
-    ] = await Promise.all([
-      this.mainContract.getPlayersCurrent(),
-      this.mainContract.getLockedBalance(),
-      this.mainContract.getLuckyTicket(),
-      this.mainContract.getCurrentRound(),
-      this.mainContract.getLastRound(),
-    ]);
+    try {
+      const [
+        feePercent,
+        betMin,
+        betMax,
+        playersMax,
+        playersCurrent,
+        lockedBalance,
+        closestTicket,
+        currentRound,
+        lastRound,
+      ] = await Promise.all([
+        this.mainContract.getFeePercent(),
+        this.mainContract.getBetMin(),
+        this.mainContract.getBetMax(),
+        this.mainContract.getPlayersMax(),
+        this.mainContract.getPlayersCurrent(),
+        this.mainContract.getLockedBalance(),
+        this.mainContract.getLuckyTicket(),
+        this.mainContract.getCurrentRound(),
+        this.mainContract.getLastRound(),
+      ]);
 
-    this.playersCurrent = playersCurrent;
-    this.lockedBalance = lockedBalance;
-    this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
-    this.currentRound = currentRound;
-    this.lastRound = lastRound;
+      this.feePercent = feePercent;
+      this.betMin = betMin;
+      this.betMax = betMax;
+      this.playersMax = playersMax;
+      this.playersCurrent = playersCurrent;
+      this.lockedBalance = lockedBalance;
+      this.closestTicket = Math.ceil(Number(closestTicket) / 1000);
+      this.currentRound = currentRound;
+      this.lastRound = lastRound;
 
-    if (this.currentRound.length) {
-      this.getPercentagesCurrentRound();
-    }
+      if (this.currentRound.length) {
+        this.getPercentagesCurrentRound();
+      }
 
-    if (this.lastRound.length) {
-      this.getPercentagesLastRound();
+      if (this.lastRound.length) {
+        this.getPercentagesLastRound();
 
-      this.findWinner(this.lastRound);
+        this.findWinner(this.lastRound);
+      }
+    } catch (error) {
+      this.refreshData();
     }
   }
 
