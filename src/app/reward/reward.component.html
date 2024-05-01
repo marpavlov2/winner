@@ -27,7 +27,9 @@
           <app-set-bet class="hidden sm:block"></app-set-bet>
         </div>
         <div class="hidden sm:block relative">
-          <span class="lucky-ticket-title tracking-widest">LAST TICKET</span>
+          <span class="lucky-ticket-title tracking-widest uppercase">
+            Lucky ticket
+          </span>
           <span class="lucky-ticket-number">{{ luckyTicket || 0 }}</span>
           <ng-lottie
             [options]="options"

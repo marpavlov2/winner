@@ -89,6 +89,7 @@ export class PotOfGoldComponent {
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(GameInfoDialogComponent, {
       width: '868px',
+      maxHeight: '100vh',
     });
 
     dialogRef.componentInstance.fee = this.mainContractService.feePercent;

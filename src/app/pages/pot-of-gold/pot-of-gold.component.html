@@ -63,6 +63,17 @@
                   {{ mainContractService.betMax || 0 }} TON
                 </span>
               </span>
+
+              <span
+                class="bg-dark-purple flex items-center rounded-lg p-2 px-4 text-sm mr-2 hidden sm:block"
+              >
+                <p
+                  class="cursor-pointer text-center text-primary-blue hover:text-slate-200"
+                  (click)="openInfoDialog()"
+                >
+                  How it Works?
+                </p>
+              </span>
             </div>
 
             <app-set-bet class="sm:hidden"></app-set-bet>
@@ -126,12 +137,13 @@
           <div
             class="flex items-center justify-center bg-primary-blue text-dark-purple py-2 px-4 tracking-wider rounded-lg"
           >
-            <h2 class="text-sm font-medium">
-              <span class="uppercase"> Lucky Ticket: </span>
-              <span>
-                {{ mainContractService.closestTicket || 0 }}
-              </span>
-            </h2>
+            <span class="uppercase text-xs sm:text-sm font-semibold">
+              Lucky Ticket:
+            </span>
+            <span>&nbsp;</span>
+            <span class="text-sm font-semibold">
+              {{ mainContractService.closestTicket || 0 }}
+            </span>
           </div>
         </div>
       </div>
