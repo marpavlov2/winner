@@ -55,7 +55,7 @@ export class NavigationComponent {
 
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(GameInfoDialogComponent, {
-      width: '1068px',
+      width: '880px',
     });
 
     dialogRef.componentInstance.fee = this.mainContractService.feePercent;

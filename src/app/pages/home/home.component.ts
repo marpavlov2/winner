@@ -4,11 +4,18 @@ import { GamesComponent } from '../games/games.component';
 import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { FooterComponent } from '../../footer/footer.component';
+import { InfoSectionComponent } from '../../info-section/info-section.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RoadmapComponent, GamesComponent, LottieComponent, FooterComponent],
+  imports: [
+    RoadmapComponent,
+    GamesComponent,
+    LottieComponent,
+    InfoSectionComponent,
+    FooterComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
