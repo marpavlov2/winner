@@ -1,7 +1,10 @@
 header {
   border-bottom: 1px solid #122346;
-  .logo-container {
-    margin-top: -4px;
+
+  @media screen and (min-width: 412px) {
+    .title {
+      display: block;
+    }
   }
 }
 

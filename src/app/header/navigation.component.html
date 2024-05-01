@@ -8,70 +8,62 @@
           width="32"
           alt=""
         />
-        <h2 class="text-xl font-medium mx-2" routerLink="/">
+        <h2 class="title text-xl font-medium mx-2 hidden" routerLink="/">
           earnplaying<span class="text-primary-blue">.</span>
         </h2>
       </div>
 
-      <div
-        id="nav-icon3"
-        class="flex justify-center items-center sm:hidden"
-        [class.open]="isMenuOpen"
-        (click)="openMenu()"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div id="myNav" class="overlay" [class.w-full]="isMenuOpen">
-        <div class="overlay-content">
+      <div class="flex justify-center items-center">
+        <div class="hidden sm:flex items-center">
           <a
+            class="mr-6 cursor-pointer text-white hover:text-slate-200"
             routerLink="/"
-            [routerLinkActive]="'is-active'"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="openMenu()"
           >
             Home
           </a>
           <a
+            class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
             routerLink="/games"
-            [routerLinkActive]="'is-active'"
-            (click)="openMenu()"
           >
             Games
           </a>
         </div>
-      </div>
 
-      <div class="hidden sm:flex items-center">
-        <a
-          class="mr-6 cursor-pointer text-white hover:text-slate-200"
-          routerLink="/"
-        >
-          Home
-        </a>
-        <!-- <a
-          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
-          routerLink="/"
-        >
-          Roadmap
-        </a> -->
-        <a
-          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
-          routerLink="/games"
-        >
-          Games
-        </a>
-        <a
-          class="mr-6 cursor-pointer text-white hover:text-slate-200 hidden sm:block"
-          (click)="openInfoDialog()"
-        >
-          How it works
-        </a>
+        <div class="flex justify-center items-center">
+          <button class="justify-end mr-6" id="ton-wallet-button"></button>
 
-        <button class="justify-end" id="ton-wallet-button"></button>
+          <div
+            id="nav-icon3"
+            class="flex justify-center items-center sm:hidden"
+            [class.open]="isMenuOpen"
+            (click)="openMenu()"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="myNav" class="overlay" [class.w-full]="isMenuOpen">
+          <div class="overlay-content">
+            <a
+              routerLink="/"
+              [routerLinkActive]="'is-active'"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="openMenu()"
+            >
+              Home
+            </a>
+            <a
+              routerLink="/games"
+              [routerLinkActive]="'is-active'"
+              (click)="openMenu()"
+            >
+              Games
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
