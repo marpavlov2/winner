@@ -124,13 +124,14 @@
 
         <div class="flex justify-center">
           <div
-            class="flex items-center justify-center bg-primary-blue text-dark-purple font-bold py-2 px-4 tracking-wider rounded-lg"
+            class="flex items-center justify-center bg-primary-blue text-dark-purple py-2 px-4 tracking-wider rounded-lg"
           >
-            <span class="text-xs uppercase"> Lucky Ticket: </span>
-            <span>&nbsp;</span>
-            <span>
-              {{ mainContractService.closestTicket || 0 }}
-            </span>
+            <h2 class="text-sm font-medium">
+              <span class="uppercase"> Lucky Ticket: </span>
+              <span>
+                {{ mainContractService.closestTicket || 0 }}
+              </span>
+            </h2>
           </div>
         </div>
       </div>
