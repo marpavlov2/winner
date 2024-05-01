@@ -6,29 +6,12 @@
   .reward {
     z-index: 2;
 
-    h2 {
-      background: -webkit-linear-gradient(45deg, #00ffa6, #00ddb3);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .ton-symbol {
       background-image: url("../../assets/ton_symbol.svg");
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
     }
-  }
-
-  .lucky-ticket-title {
-    position: absolute;
-    z-index: 10;
-    top: 12%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 700;
-    font-size: 18px;
-    color: #fff;
   }
 
   .lucky-ticket-number {
