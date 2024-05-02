@@ -137,12 +137,8 @@
           <div
             class="flex items-center justify-center border-dashed border-2 border-primary-blue text-white py-2 px-4 tracking-wider rounded-lg"
           >
-            <span class="uppercase text-xs sm:text-sm font-semibold">
-              Lucky Ticket:
-            </span>
-            <span>&nbsp;</span>
-            <span class="sm:text-base font-semibold">
-              {{ mainContractService.closestTicket || 0 }}
+            <span class="uppercase font-semibold text-sm">
+              Lucky Ticket: {{ mainContractService.closestTicket || 0 }}
             </span>
           </div>
         </div>
